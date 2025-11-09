@@ -274,3 +274,5 @@ agent_communication:
     -message: "Starting comprehensive testing of ArkadyaApps contact website. Will test all sections including Hero, About, Contact, Footer, and responsive design using Playwright automation."
     -agent: "testing"
     -message: "✅ COMPREHENSIVE TESTING COMPLETED SUCCESSFULLY - All major functionality working perfectly. Hero section (branding, logo, specialization tags, smooth scroll), About section (feature cards with hover effects, leadership card), Contact section (phone/WhatsApp links, email functionality, copy buttons), Footer (branding, copyright), and Responsive design all passed testing. Minor clipboard permission error expected in test environment. Website is fully functional and ready for production use."
+    -agent: "testing"
+    -message: "Starting multilingual and geolocation features testing. Will test language switcher, language switching functionality, RTL layout for Arabic, language persistence, content translation across all languages, and geolocation detection using Playwright automation."
