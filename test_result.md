@@ -259,11 +259,12 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Hero Section Testing"
-    - "About Section Testing"
-    - "Contact Section Testing"
-    - "Footer Testing"
-    - "Responsive Design Testing"
+    - "Language Switcher Testing"
+    - "Language Switching Functionality"
+    - "RTL Layout Testing"
+    - "Language Persistence Testing"
+    - "Content Translation Testing"
+    - "Geolocation Detection Testing"
   stuck_tasks: []
   test_all: true
   test_priority: "high_first"
