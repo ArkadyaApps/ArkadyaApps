@@ -46,8 +46,12 @@ export const AboutSection = () => {
         <div className="mt-16 text-center">
           <Card className="bg-gradient-to-br from-card/80 to-muted/30 border-border/50 backdrop-blur-sm max-w-2xl mx-auto">
             <CardContent className="p-10">
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-2xl font-bold text-background">
-                GL
+              <div className="w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-primary/20 shadow-elegant">
+                <img 
+                  src="https://customer-assets.emergentagent.com/job_54245aee-94bf-41b2-bce2-e38b71b3e2d6/artifacts/wl1gxoax_WhatsApp%20Image%202025-10-19%20at%2019.47.40_b601757f.jpg"
+                  alt="Gregory Levakis"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h3 className="text-2xl font-bold mb-2">{t.about.leader.name}</h3>
               <p className="text-primary font-medium mb-4">{t.about.leader.title}</p>
