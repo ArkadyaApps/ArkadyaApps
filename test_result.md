@@ -289,14 +289,9 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Language Switcher Testing"
-    - "Language Switching Functionality"
-    - "RTL Layout Testing"
-    - "Language Persistence Testing"
-    - "Content Translation Testing"
-    - "Geolocation Detection Testing"
+    - "Our Work Portfolio Section Testing"
   stuck_tasks: []
-  test_all: true
+  test_all: false
   test_priority: "high_first"
 
 agent_communication:
