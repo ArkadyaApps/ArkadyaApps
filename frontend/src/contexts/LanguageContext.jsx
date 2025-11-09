@@ -32,6 +32,11 @@ const translations = {
         bio: 'Leading operations across multiple continents, bringing innovative tech solutions to life with expertise in mobile development, web applications, AI, and blockchain technology.'
       }
     },
+    work: {
+      title: 'Our',
+      titleHighlight: 'Work',
+      description: 'Explore our portfolio of innovative projects and successful implementations across multiple industries.'
+    },
     contact: {
       title: 'Get In',
       titleHighlight: 'Touch',
@@ -86,6 +91,11 @@ const translations = {
         title: 'Fondateur et PDG',
         bio: 'Dirigeant des opérations sur plusieurs continents, donnant vie à des solutions technologiques innovantes avec une expertise en développement mobile, applications web, IA et technologie blockchain.'
       }
+    },
+    work: {
+      title: 'Nos',
+      titleHighlight: 'Réalisations',
+      description: 'Découvrez notre portefeuille de projets innovants et de mises en œuvre réussies dans plusieurs secteurs.'
     },
     contact: {
       title: 'Entrer en',
@@ -142,6 +152,11 @@ const translations = {
         bio: 'قيادة العمليات عبر قارات متعددة، وإحياء الحلول التقنية المبتكرة بخبرة في تطوير الجوال وتطبيقات الويب والذكاء الاصطناعي وتقنية بلوكتشين.'
       }
     },
+    work: {
+      title: 'أعمالنا',
+      titleHighlight: 'المنجزة',
+      description: 'استكشف محفظتنا من المشاريع المبتكرة والتنفيذات الناجحة عبر عدة صناعات.'
+    },
     contact: {
       title: 'ابقى على',
       titleHighlight: 'تواصل',
@@ -196,6 +211,11 @@ const translations = {
         title: 'ผู้ก่อตั้งและซีอีโอ',
         bio: 'นำการดำเนินงานข้ามหลายทวีป นำโซลูชันเทคโนโลยีที่เป็นนวัตกรรมมาสู่ชีวิตด้วยความเชี่ยวชาญในการพัฒนามือถือ เว็บแอปพลิเคชัน AI และเทคโนโลยีบล็อกเชน'
       }
+    },
+    work: {
+      title: 'ผลงาน',
+      titleHighlight: 'ของเรา',
+      description: 'สำรวจพอร์ตโฟลิโอของโครงการที่เป็นนวัตกรรมแลมีความสำเร็จในหลายอุตสาหกรรม'
     },
     contact: {
       title: 'ติดต่อ',
