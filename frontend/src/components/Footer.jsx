@@ -1,10 +1,13 @@
 import { Building2 } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const Footer = () => {
+  const { t, language } = useLanguage();
+  const isRTL = language === 'ar';
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-12 px-4 sm:px-6 lg:px-8 border-t border-border/50">
+    <footer className="py-12 px-4 sm:px-6 lg:px-8 border-t border-border/50" dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo & Brand */}
@@ -13,18 +16,18 @@ export const Footer = () => {
               <Building2 className="w-5 h-5 text-background" />
             </div>
             <div>
-              <h3 className="font-bold text-lg">ArkadyaApps</h3>
-              <p className="text-sm text-muted-foreground">Tech Innovation</p>
+              <h3 className="font-bold text-lg">{t.footer.company}</h3>
+              <p className="text-sm text-muted-foreground">{t.footer.tagline}</p>
             </div>
           </div>
 
           {/* Copyright */}
           <div className="text-center md:text-right">
             <p className="text-sm text-muted-foreground">
-              © {currentYear} ArkadyaApps. All rights reserved.
+              © {currentYear} {t.footer.company}. {t.footer.copyright}
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              Powered by Gregory Levakis
+              {t.footer.poweredBy}
             </p>
           </div>
         </div>

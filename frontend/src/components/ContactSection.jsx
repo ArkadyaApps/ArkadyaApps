@@ -2,30 +2,34 @@ import { MapPin, Phone, Mail, MessageCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const ContactSection = () => {
+  const { t, language } = useLanguage();
+  const isRTL = language === 'ar';
+
   const contacts = [
     {
-      region: 'France',
+      region: t.contact.regions.france,
       icon: Phone,
       details: [
-        { label: 'Phone', value: '+33 6 47 44 25 74', link: 'tel:+33647442574' },
+        { label: t.contact.labels.phone, value: '+33 6 47 44 25 74', link: 'tel:+33647442574' },
       ],
       flag: '🇫🇷',
     },
     {
-      region: 'Thailand',
+      region: t.contact.regions.thailand,
       icon: MessageCircle,
       details: [
-        { label: 'WhatsApp', value: '+66 98 621 20 33', link: 'https://wa.me/66986212033' },
+        { label: t.contact.labels.whatsapp, value: '+66 98 621 20 33', link: 'https://wa.me/66986212033' },
       ],
       flag: '🇹🇭',
     },
     {
-      region: 'Morocco',
+      region: t.contact.regions.morocco,
       icon: MessageCircle,
       details: [
-        { label: 'WhatsApp', value: '+212 779 81 53 93', link: 'https://wa.me/212779815393' },
+        { label: t.contact.labels.whatsapp, value: '+212 779 81 53 93', link: 'https://wa.me/212779815393' },
       ],
       flag: '🇲🇦',
     },
@@ -33,19 +37,19 @@ export const ContactSection = () => {
 
   const handleCopy = (text) => {
     navigator.clipboard.writeText(text);
-    toast.success('Copied to clipboard!');
+    toast.success(t.contact.copySuccess);
   };
 
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 relative">
+    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 relative" dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            Get In <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Touch</span>
+            {t.contact.title} <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{t.contact.titleHighlight}</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Reach out to us through any of our regional offices or via email.
+            {t.contact.description}
           </p>
         </div>
 
@@ -121,7 +125,7 @@ export const ContactSection = () => {
                 <Mail className="w-8 h-8 text-primary" />
               </div>
               <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-xl font-semibold mb-2">Email Us</h3>
+                <h3 className="text-xl font-semibold mb-2">{t.contact.email}</h3>
                 <a
                   href="mailto:arkadyaproperties@gmail.com"
                   className="text-lg text-primary hover:text-secondary transition-colors font-medium"
@@ -134,7 +138,7 @@ export const ContactSection = () => {
                 variant="outline"
                 className="border-primary/50 hover:bg-primary/10"
               >
-                Copy Email
+                {t.contact.copyEmail}
               </Button>
             </div>
           </CardContent>

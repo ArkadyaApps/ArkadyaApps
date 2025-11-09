@@ -1,13 +1,17 @@
 import { Building2, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const HeroSection = () => {
+  const { t, language } = useLanguage();
+  const isRTL = language === 'ar';
+
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-card to-background">
         <div className="absolute inset-0 opacity-20">
@@ -27,18 +31,18 @@ export const HeroSection = () => {
         {/* Main Heading */}
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
           <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-            ArkadyaApps
+            {t.hero.title}
           </span>
         </h1>
 
         {/* Tagline */}
         <p className="text-xl sm:text-2xl text-muted-foreground mb-4 max-w-3xl mx-auto leading-relaxed">
-          Innovating Tomorrow's Technology Today
+          {t.hero.tagline}
         </p>
 
         {/* Specializations */}
         <div className="flex flex-wrap justify-center gap-3 mb-12 max-w-2xl mx-auto">
-          {['Mobile Apps', 'Web Applications', 'AI Content', 'Crypto'].map((spec) => (
+          {t.hero.specializations.map((spec) => (
             <div
               key={spec}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/50 border border-border/50 backdrop-blur-sm"
@@ -55,7 +59,7 @@ export const HeroSection = () => {
           onClick={scrollToContact}
           className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-background font-semibold px-8 py-6 text-lg rounded-xl shadow-elegant hover:shadow-glow transition-all duration-300"
         >
-          Get In Touch
+          {t.hero.cta}
         </Button>
 
         {/* Decorative Line */}
