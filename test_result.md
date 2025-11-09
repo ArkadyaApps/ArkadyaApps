@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Test the ArkadyaApps contact information website for all sections including Hero, About, Contact, Footer, and responsive design"
+user_problem_statement: "Test the multilingual and geolocation features of the ArkadyaApps website including language switcher, language switching, RTL layout, language persistence, content translation, and geolocation detection"
 
 frontend:
   - task: "Hero Section Testing"
