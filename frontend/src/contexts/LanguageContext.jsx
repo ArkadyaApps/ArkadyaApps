@@ -37,6 +37,28 @@ const translations = {
       titleHighlight: 'Work',
       description: 'Explore our portfolio of innovative projects and successful implementations across multiple industries.'
     },
+    currentWork: {
+      title: 'Current',
+      titleHighlight: 'Projects',
+      description: 'Live applications we\'re actively developing and maintaining for our clients.',
+      visitSite: 'Visit Live Site',
+      screenshotPlaceholder: 'Screenshot Coming Soon',
+      note: 'These are live, actively maintained projects. Screenshots will be added soon.',
+      projects: [
+        {
+          category: 'Rewards Platform',
+          description: 'A comprehensive rewards and loyalty platform enabling businesses to engage customers through gamification and incentives.'
+        },
+        {
+          category: 'Raffle Platform',
+          description: 'An innovative raffle and contest platform for running secure, transparent prize draws and promotional campaigns.'
+        },
+        {
+          category: 'Delivery Platform',
+          description: 'A modern delivery and logistics solution connecting customers with local services and products.'
+        }
+      ]
+    },
     contact: {
       title: 'Get In',
       titleHighlight: 'Touch',
@@ -96,6 +118,28 @@ const translations = {
       title: 'Nos',
       titleHighlight: 'Réalisations',
       description: 'Découvrez notre portefeuille de projets innovants et de mises en œuvre réussies dans plusieurs secteurs.'
+    },
+    currentWork: {
+      title: 'Projets',
+      titleHighlight: 'Actuels',
+      description: 'Applications en direct que nous développons et maintenons activement pour nos clients.',
+      visitSite: 'Visiter le site',
+      screenshotPlaceholder: 'Capture d\'écran à venir',
+      note: 'Ce sont des projets en direct et activement maintenus. Les captures d\'écran seront ajoutées prochainement.',
+      projects: [
+        {
+          category: 'Plateforme de récompenses',
+          description: 'Une plateforme complète de récompenses et de fidélité permettant aux entreprises d\'engager les clients grâce à la gamification et aux incitations.'
+        },
+        {
+          category: 'Plateforme de tombola',
+          description: 'Une plateforme innovante de tombola et de concours pour organiser des tirages au sort sécurisés et transparents et des campagnes promotionnelles.'
+        },
+        {
+          category: 'Plateforme de livraison',
+          description: 'Une solution moderne de livraison et de logistique connectant les clients aux services et produits locaux.'
+        }
+      ]
     },
     contact: {
       title: 'Entrer en',
@@ -157,6 +201,28 @@ const translations = {
       titleHighlight: 'المنجزة',
       description: 'استكشف محفظتنا من المشاريع المبتكرة والتنفيذات الناجحة عبر عدة صناعات.'
     },
+    currentWork: {
+      title: 'المشاريع',
+      titleHighlight: 'الحالية',
+      description: 'التطبيقات المباشرة التي نقوم بتطويرها وصيانتها بنشاط لعملائنا.',
+      visitSite: 'زيارة الموقع المباشر',
+      screenshotPlaceholder: 'لقطة الشاشة قادمة قريباً',
+      note: 'هذه مشاريع مباشرة ويتم صيانتها بنشاط. سيتم إضافة لقطات الشاشة قريباً.',
+      projects: [
+        {
+          category: 'منصة المكافآت',
+          description: 'منصة شاملة للمكافآت والولاء تمكن الشركات من إشراك العملاء من خلال اللعب والحوافز.'
+        },
+        {
+          category: 'منصة السحوبات',
+          description: 'منصة مبتكرة للسحوبات والمسابقات لإجراء سحوبات جوائز آمنة وشفافة وحملات ترويجية.'
+        },
+        {
+          category: 'منصة التوصيل',
+          description: 'حل حديث للتوصيل واللوجستيات يربط العملاء بالخدمات والمنتجات المحلية.'
+        }
+      ]
+    },
     contact: {
       title: 'ابقى على',
       titleHighlight: 'تواصل',
@@ -215,7 +281,29 @@ const translations = {
     work: {
       title: 'ผลงาน',
       titleHighlight: 'ของเรา',
-      description: 'สำรวจพอร์ตโฟลิโอของโครงการที่เป็นนวัตกรรมแลมีความสำเร็จในหลายอุตสาหกรรม'
+      description: 'สำรวจพอร์ตโฟลิโอของโครงการที่เป็นนวัตกรรมและมีความสำเร็จในหลายอุตสาหกรรม'
+    },
+    currentWork: {
+      title: 'โครงการ',
+      titleHighlight: 'ปัจจุบัน',
+      description: 'แอปพลิเคชันที่ใช้งานจริงที่เรากำลังพัฒนาและดูแลรักษาอย่างต่อเนื่องสำหรับลูกค้าของเรา',
+      visitSite: 'เยี่ยมชมเว็บไซต์',
+      screenshotPlaceholder: 'ภาพหน้าจอกำลังมา',
+      note: 'เหล่านี้เป็นโครงการที่ใช้งานจริงและได้รับการดูแลรักษาอย่างต่อเนื่อง ภาพหน้าจอจะถูกเพิ่มในเร็วๆ นี้',
+      projects: [
+        {
+          category: 'แพลตฟอร์มรางวัล',
+          description: 'แพลตฟอร์มรางวัลและความภักดีที่ครอบคลุมช่วยให้ธุรกิจมีส่วนร่วมกับลูกค้าผ่านการเล่นเกมและสิ่งจูงใจ'
+        },
+        {
+          category: 'แพลตฟอร์มการจับฉลาก',
+          description: 'แพลตฟอร์มการจับฉลากและการประกวดที่เป็นนวัตกรรมสำหรับการจัดการจับรางวัลที่ปลอดภัยและโปร่งใสและแคมเปญส่งเสริมการขาย'
+        },
+        {
+          category: 'แพลตฟอร์มจัดส่ง',
+          description: 'โซลูชันการจัดส่งและโลจิสติกส์สมัยใหม่ที่เชื่อมต่อลูกค้ากับบริการและผลิตภัณฑ์ในท้องถิ่น'
+        }
+      ]
     },
     contact: {
       title: 'ติดต่อ',
