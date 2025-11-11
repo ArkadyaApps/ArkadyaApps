@@ -1,13 +1,14 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Code2, ExternalLink, Image as ImageIcon } from 'lucide-react';
+import { Code2, ExternalLink, Image as ImageIcon, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 
 export const CurrentWorkSection = () => {
   const { t, language } = useLanguage();
   const isRTL = language === 'ar';
   const [selectedProject, setSelectedProject] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const projects = [
     {
@@ -44,6 +45,23 @@ export const CurrentWorkSection = () => {
       ]
     }
   ];
+
+  const handleProjectChange = (index) => {
+    setSelectedProject(index);
+    setCurrentSlide(0); // Reset carousel when switching projects
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => 
+      prev === projects[selectedProject].pages.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => 
+      prev === 0 ? projects[selectedProject].pages.length - 1 : prev - 1
+    );
+  };
 
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 relative" dir={isRTL ? 'rtl' : 'ltr'}>
