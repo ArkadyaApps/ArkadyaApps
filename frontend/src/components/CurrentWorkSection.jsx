@@ -84,7 +84,7 @@ export const CurrentWorkSection = () => {
           {projects.map((project, index) => (
             <Button
               key={index}
-              onClick={() => setSelectedProject(index)}
+              onClick={() => handleProjectChange(index)}
               variant={selectedProject === index ? 'default' : 'outline'}
               className={`${
                 selectedProject === index
@@ -101,16 +101,16 @@ export const CurrentWorkSection = () => {
         <div className="space-y-8">
           {/* Project Info Card */}
           <Card className="bg-card/50 border-border/50 backdrop-blur-sm">
-            <CardContent className="p-8">
+            <CardContent className="p-6 md:p-8">
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
                 <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-3">
-                    <h3 className="text-3xl font-bold">{projects[selectedProject].name}</h3>
+                  <div className="flex flex-wrap items-center gap-3 mb-3">
+                    <h3 className="text-2xl md:text-3xl font-bold">{projects[selectedProject].name}</h3>
                     <span className="px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary">
                       {projects[selectedProject].category}
                     </span>
                   </div>
-                  <p className="text-muted-foreground text-lg mb-4">
+                  <p className="text-muted-foreground text-base md:text-lg mb-4">
                     {projects[selectedProject].description}
                   </p>
                   <a
@@ -127,48 +127,75 @@ export const CurrentWorkSection = () => {
             </CardContent>
           </Card>
 
-          {/* Screenshot Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {projects[selectedProject].pages.map((page, pageIndex) => (
-              <Card
-                key={pageIndex}
-                className="group bg-card/50 border-border/50 backdrop-blur-sm hover:shadow-elegant transition-all duration-300 overflow-hidden"
-              >
-                <CardContent className="p-0">
-                  {/* Screenshot Placeholder */}
-                  <div className="relative aspect-[4/3] bg-muted/50 flex items-center justify-center border-b border-border/50">
-                    {page.placeholder ? (
-                      <div className="flex flex-col items-center gap-3 p-6 text-center">
-                        <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                          <ImageIcon className="w-8 h-8 text-primary" />
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium text-foreground mb-1">
-                            {t.currentWork.screenshotPlaceholder}
-                          </p>
-                          <p className="text-xs text-muted-foreground">
-                            {page.name}
-                          </p>
-                        </div>
+          {/* Carousel Container */}
+          <div className="relative max-w-3xl mx-auto">
+            <Card className="bg-card/50 border-border/50 backdrop-blur-sm overflow-hidden">
+              <CardContent className="p-0">
+                {/* Carousel Slide */}
+                <div className="relative aspect-video bg-muted/50 flex items-center justify-center">
+                  {projects[selectedProject].pages[currentSlide].placeholder ? (
+                    <div className="flex flex-col items-center gap-4 p-8 text-center">
+                      <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                        <ImageIcon className="w-10 h-10 text-primary" />
                       </div>
-                    ) : (
-                      <img
-                        src={page.screenshot}
-                        alt={`${projects[selectedProject].name} - ${page.name}`}
-                        className="w-full h-full object-cover"
-                      />
-                    )}
-                  </div>
-                  
-                  {/* Page Label */}
-                  <div className="p-4 bg-card/80">
-                    <p className="text-sm font-medium text-foreground text-center">
-                      {page.name}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                      <div>
+                        <p className="text-base font-medium text-foreground mb-2">
+                          {t.currentWork.screenshotPlaceholder}
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          {projects[selectedProject].pages[currentSlide].name}
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    <img
+                      src={projects[selectedProject].pages[currentSlide].screenshot}
+                      alt={`${projects[selectedProject].name} - ${projects[selectedProject].pages[currentSlide].name}`}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+
+                  {/* Navigation Buttons */}
+                  <button
+                    onClick={prevSlide}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border/50 flex items-center justify-center hover:bg-background transition-all duration-300 hover:scale-110 shadow-lg"
+                    aria-label="Previous slide"
+                  >
+                    <ChevronLeft className="w-5 h-5 text-foreground" />
+                  </button>
+                  <button
+                    onClick={nextSlide}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border/50 flex items-center justify-center hover:bg-background transition-all duration-300 hover:scale-110 shadow-lg"
+                    aria-label="Next slide"
+                  >
+                    <ChevronRight className="w-5 h-5 text-foreground" />
+                  </button>
+                </div>
+
+                {/* Carousel Indicators */}
+                <div className="flex items-center justify-center gap-2 py-4 bg-card/80">
+                  {projects[selectedProject].pages.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentSlide(index)}
+                      className={`transition-all duration-300 rounded-full ${
+                        index === currentSlide
+                          ? 'w-8 h-2 bg-primary'
+                          : 'w-2 h-2 bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
+
+                {/* Page Label */}
+                <div className="px-6 py-3 bg-card border-t border-border/50">
+                  <p className="text-sm font-medium text-foreground text-center">
+                    {projects[selectedProject].pages[currentSlide].name}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
 
