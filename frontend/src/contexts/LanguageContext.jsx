@@ -35,16 +35,12 @@ const translations = {
     work: {
       title: 'Our',
       titleHighlight: 'Work',
-      description: 'Explore our portfolio of innovative projects and successful implementations across multiple industries.'
-    },
-    currentWork: {
-      title: 'Current',
-      titleHighlight: 'Projects',
-      description: 'Live applications we\'re actively developing and maintaining for our clients.',
+      description: 'Explore our portfolio of innovative projects and successful implementations across multiple industries.',
+      ongoingTab: 'Ongoing Projects',
+      portfolioTab: 'Portfolio',
       visitSite: 'Visit Live Site',
       screenshotPlaceholder: 'Screenshot Coming Soon',
-      note: 'These are live, actively maintained projects. Screenshots will be added soon.',
-      projects: [
+      ongoing: [
         {
           category: 'Rewards Platform',
           description: 'A comprehensive rewards and loyalty platform enabling businesses to engage customers through gamification and incentives.'
@@ -57,12 +53,18 @@ const translations = {
           category: 'Delivery Platform',
           description: 'A modern delivery and logistics solution connecting customers with local services and products.'
         }
+      ],
+      portfolio: [
+        { category: 'Raffle & Contest' },
+        { category: 'Travel & Experience' },
+        { category: 'E-commerce Platform' }
       ]
     },
     contact: {
       title: 'Get In',
       titleHighlight: 'Touch',
       description: 'Reach out to us through any of our regional offices or via email.',
+      directContact: 'Direct Contact',
       regions: {
         france: 'France',
         thailand: 'Thailand',
@@ -70,7 +72,8 @@ const translations = {
       },
       labels: {
         phone: 'Phone',
-        whatsapp: 'WhatsApp'
+        whatsapp: 'WhatsApp',
+        line: 'LINE'
       },
       email: 'Email Us',
       copyEmail: 'Copy Email',
