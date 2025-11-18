@@ -52,6 +52,10 @@ const translations = {
         {
           category: 'Delivery Platform',
           description: 'A modern delivery and logistics solution connecting customers with local services and products.'
+        },
+        {
+          category: 'Community Platform',
+          description: 'An exclusive community platform connecting members with shared interests, events, and networking opportunities.'
         }
       ],
       portfolio: [
