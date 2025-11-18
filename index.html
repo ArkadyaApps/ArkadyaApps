@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ArkadyaApps - French tech company specializing in Mobile Apps, Web Applications, AI Content, and Crypto. Led by Gregory Levakis with operations in France, Morocco, and Thailand.">
+    <title>ArkadyaApps - Tech Innovation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --background: #1e2936;
+            --foreground: #f5f6f7;
+            --card: #242d3a;
+            --border: #3a4553;
+            --primary: #22b4d6;
+            --secondary: #36c2ad;
+            --accent: #4dd4bd;
+            --muted: #374151;
+            --muted-foreground: #9ca3af;
+        }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 1000;
+        }
+
+        .lang-btn {
+            background: rgba(36, 45, 58, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(58, 69, 83, 0.5);
+            color: var(--foreground);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .lang-btn:hover {
+            background: var(--card);
+            box-shadow: 0 10px 40px -10px rgba(34, 180, 214, 0.2);
+        }
+
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+            background: rgba(36, 45, 58, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(58, 69, 83, 0.5);
+            border-radius: 0.5rem;
+            min-width: 150px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .lang-dropdown.show {
+            display: block;
+        }
+
+        .lang-option {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .lang-option:hover {
+            background: rgba(34, 180, 214, 0.1);
+        }
+
+        .lang-option.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 5rem 1rem;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #1e2936 0%, #242d3a 50%, #1e2936 100%);
+        }
+
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.2;
+            animation: pulse-slow 4s ease-in-out infinite;
+        }
+
+        .blob-1 {
+            top: 5rem;
+            left: 2.5rem;
+            width: 18rem;
+            height: 18rem;
+            background: var(--primary);
+        }
+
+        .blob-2 {
+            top: 10rem;
+            right: 2.5rem;
+            width: 18rem;
+            height: 18rem;
+            background: var(--secondary);
+            animation-delay: 2s;
+        }
+
+        .blob-3 {
+            bottom: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 18rem;
+            height: 18rem;
+            background: var(--accent);
+            animation-delay: 4s;
+        }
+
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.1; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-icon {
+            width: 5rem;
+            height: 5rem;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 40px -10px rgba(34, 180, 214, 0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1.125rem, 3vw, 1.5rem);
+            color: var(--muted-foreground);
+            margin-bottom: 1rem;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .spec-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .spec-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(36, 45, 58, 0.5);
+            border: 1px solid rgba(58, 69, 83, 0.5);
+            border-radius: 9999px;
+            backdrop-filter: blur(4px);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--background);
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 10px 40px -10px rgba(34, 180, 214, 0.2);
+            transition: all 0.3s;
+        }
+
+        .cta-btn:hover {
+            opacity: 0.9;
+            box-shadow: 0 0 60px rgba(77, 212, 189, 0.15);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 1rem;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-icon {
+            width: 4rem;
+            height: 4rem;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, rgba(34, 180, 214, 0.2), rgba(54, 194, 173, 0.2));
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .section-title {
+            font-size: clamp(1.875rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(36, 45, 58, 0.5);
+            border: 1px solid rgba(58, 69, 83, 0.5);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            backdrop-filter: blur(4px);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            background: var(--card);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            transform: translateY(-4px);
+        }
+
+        /* Grid Layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        /* About Section */
+        .feature-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: linear-gradient(135deg, rgba(34, 180, 214, 0.2), rgba(54, 194, 173, 0.2));
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .card:hover .feature-icon {
+            transform: scale(1.1);
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-desc {
+            color: var(--muted-foreground);
+            line-height: 1.625;
+        }
+
+        .leader-card {
+            max-width: 42rem;
+            margin: 4rem auto 0;
+            background: linear-gradient(135deg, rgba(36, 45, 58, 0.8), rgba(55, 65, 81, 0.3));
+            text-align: center;
+        }
+
+        .leader-photo {
+            width: 6rem;
+            height: 6rem;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            border: 4px solid rgba(34, 180, 214, 0.2);
+            box-shadow: 0 10px 40px -10px rgba(34, 180, 214, 0.2);
+            object-fit: cover;
+        }
+
+        .leader-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .leader-title {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .leader-bio {
+            color: var(--muted-foreground);
+            line-height: 1.625;
+        }
+
+        /* Work Section */
+        .work-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid rgba(58, 69, 83, 0.5);
+            background: rgba(36, 45, 58, 0.5);
+            color: var(--foreground);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .tab-btn:hover {
+            border-color: rgba(34, 180, 214, 0.5);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--background);
+            border-color: transparent;
+            box-shadow: 0 10px 40px -10px rgba(34, 180, 214, 0.2);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .project-btn {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid rgba(34, 180, 214, 0.3);
+            color: var(--foreground);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+        }
+
+        .project-btn:hover {
+            border-color: rgba(34, 180, 214, 0.6);
+            background: rgba(34, 180, 214, 0.05);
+        }
+
+        .project-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--background);
+            border-color: transparent;
+            box-shadow: 0 0 60px rgba(77, 212, 189, 0.15);
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, rgba(36, 45, 58, 0.8), rgba(36, 45, 58, 0.4));
+            margin-bottom: 2rem;
+        }
+
+        .project-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-name {
+            font-size: 1.875rem;
+            font-weight: 700;
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .badge-category {
+            background: linear-gradient(135deg, rgba(34, 180, 214, 0.2), rgba(54, 194, 173, 0.2));
+            color: var(--primary);
+            border: 1px solid rgba(34, 180, 214, 0.3);
+        }
+
+        .badge-live {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+        }
+
+        .live-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .project-desc {
+            color: var(--muted-foreground);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            line-height: 1.625;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: var(--secondary);
+        }
+
+        .carousel {
+            max-width: 56rem;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .carousel-container {
+            background: rgba(36, 45, 58, 0.5);
+            border: 1px solid rgba(58, 69, 83, 0.5);
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+
+        .carousel-slide {
+            aspect-ratio: 16 / 9;
+            background: linear-gradient(135deg, rgba(55, 65, 81, 0.5), rgba(55, 65, 81, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .placeholder {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .placeholder-icon {
+            width: 6rem;
+            height: 6rem;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, rgba(34, 180, 214, 0.2), rgba(54, 194, 173, 0.2));
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 60px rgba(77, 212, 189, 0.15);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3rem;
+            height: 3rem;
+            background: rgba(30, 41, 54, 0.9);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(34, 180, 214, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 40px -10px rgba(34, 180, 214, 0.2);
+        }
+
+        .carousel-nav:hover {
+            background: var(--background);
+            border-color: var(--primary);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-nav.prev {
+            left: 1rem;
+        }
+
+        .carousel-nav.next {
+            right: 1rem;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, rgba(36, 45, 58, 0.8), var(--card));
+        }
+
+        .indicator {
+            width: 0.625rem;
+            height: 0.625rem;
+            background: rgba(156, 163, 175, 0.3);
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator:hover {
+            background: rgba(156, 163, 175, 0.5);
+            transform: scale(1.25);
+        }
+
+        .indicator.active {
+            width: 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            box-shadow: 0 0 60px rgba(77, 212, 189, 0.15);
+        }
+
+        .carousel-label {
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, rgba(36, 45, 58, 0.9), rgba(36, 45, 58, 0.7));
+            border-top: 1px solid rgba(58, 69, 83, 0.5);
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            cursor: pointer;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            transition: transform 0.7s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1) rotate(2deg);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, var(--background), rgba(30, 41, 54, 0.7), transparent);
+            opacity: 0;
+            transition: opacity 0.5s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            transform: translateY(20px);
+            transition: transform 0.5s;
+        }
+
+        .portfolio-item:hover .portfolio-name {
+            transform: translateY(0);
+        }
+
+        .portfolio-category {
+            color: var(--primary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transform: translateY(20px);
+            transition: transform 0.5s 0.1s;
+        }
+
+        .portfolio-item:hover .portfolio-category {
+            transform: translateY(0);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(36, 45, 58, 0.5);
+            border: 1px solid rgba(58, 69, 83, 0.5);
+            backdrop-filter: blur(4px);
+        }
+
+        .contact-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-icon {
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, rgba(34, 180, 214, 0.2), rgba(54, 194, 173, 0.2));
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.1);
+        }
+
+        .region-flag {
+            font-size: 2.5rem;
+        }
+
+        .region-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-detail {
+            margin-top: 0.75rem;
+        }
+
+        .contact-label {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-value {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-link {
+            color: var(--foreground);
+            text-decoration: none;
+            font-weight: 500;
+            flex: 1;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: var(--primary);
+        }
+
+        .copy-btn {
+            width: 2rem;
+            height: 2rem;
+            background: transparent;
+            border: none;
+            color: var(--muted-foreground);
+            cursor: pointer;
+            border-radius: 0.25rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .copy-btn:hover {
+            background: rgba(34, 180, 214, 0.1);
+            color: var(--primary);
+        }
+
+        .email-card {
+            max-width: 42rem;
+            margin: 0 auto 3rem;
+            background: linear-gradient(135deg, rgba(36, 45, 58, 0.8), rgba(55, 65, 81, 0.3));
+        }
+
+        .email-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        @media (min-width: 640px) {
+            .email-content {
+                flex-direction: row;
+            }
+        }
+
+        .email-icon {
+            width: 4rem;
+            height: 4rem;
+            background: linear-gradient(135deg, rgba(34, 180, 214, 0.2), rgba(54, 194, 173, 0.2));
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .email-info {
+            flex: 1;
+            text-align: center;
+        }
+
+        @media (min-width: 640px) {
+            .email-info {
+                text-align: left;
+            }
+        }
+
+        .email-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .email-link {
+            font-size: 1.125rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .email-link:hover {
+            color: var(--secondary);
+        }
+
+        .email-btn {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid rgba(34, 180, 214, 0.5);
+            color: var(--foreground);
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .email-btn:hover {
+            background: rgba(34, 180, 214, 0.1);
+        }
+
+        .direct-contact-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .direct-contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+
+        .direct-contact-link {
+            text-decoration: none;
+            display: block;
+        }
+
+        .whatsapp-card {
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(34, 197, 94, 0.1));
+            border: 1px solid rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-card:hover {
+            border-color: rgba(37, 211, 102, 0.6);
+        }
+
+        .line-card {
+            background: linear-gradient(135deg, rgba(6, 201, 75, 0.1), rgba(34, 197, 94, 0.1));
+            border: 1px solid rgba(6, 201, 75, 0.3);
+        }
+
+        .line-card:hover {
+            border-color: rgba(6, 201, 75, 0.6);
+        }
+
+        .direct-contact-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .direct-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-card:hover .direct-icon {
+            transform: scale(1.1);
+        }
+
+        .line-card:hover .direct-icon {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-icon-bg {
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.2), rgba(34, 197, 94, 0.2));
+        }
+
+        .line-icon-bg {
+            background: linear-gradient(135deg, rgba(6, 201, 75, 0.2), rgba(34, 197, 94, 0.2));
+        }
+
+        .direct-info {
+            flex: 1;
+            text-align: left;
+        }
+
+        .direct-label {
+            font-weight: 600;
+            color: var(--foreground);
+            margin-bottom: 0.25rem;
+        }
+
+        .direct-value {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+
+        .arrow-icon {
+            color: #25d366;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-card:hover .arrow-icon,
+        .line-card:hover .arrow-icon {
+            transform: translateX(4px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 1rem;
+            border-top: 1px solid rgba(58, 69, 83, 0.5);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .footer-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-title {
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        .footer-tagline {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+
+        .footer-copyright {
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer-copyright {
+                text-align: right;
+            }
+        }
+
+        .footer-text {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+
+        .footer-powered {
+            font-size: 0.75rem;
+            color: var(--muted-foreground);
+            margin-top: 0.25rem;
+        }
+
+        .decorative-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .line-segment {
+            height: 1px;
+            width: 5rem;
+            background: linear-gradient(to right, transparent, var(--border));
+        }
+
+        .line-segment.reverse {
+            background: linear-gradient(to left, transparent, var(--border));
+        }
+
+        .dot-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 0.375rem;
+            height: 0.375rem;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .dot-1 {
+            background: var(--primary);
+        }
+
+        .dot-2 {
+            background: var(--secondary);
+            animation-delay: 0.5s;
+        }
+
+        .dot-3 {
+            background: var(--accent);
+            animation-delay: 1s;
+        }
+
+        /* RTL Support */
+        [dir="rtl"] {
+            direction: rtl;
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                padding: 4rem 1rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .lang-switcher {
+                top: 1rem;
+                right: 1rem;
+            }
+        }
+
+        /* SVG Icons */
+        .icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            fill: currentColor;
+        }
+
+        .icon-lg {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        .icon-xl {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+        <button class="lang-btn" onclick="toggleLangDropdown()">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
+            </svg>
+            <span id="current-lang-name">English</span>
+            <span id="current-lang-flag">🇬🇧</span>
+        </button>
+        <div class="lang-dropdown" id="lang-dropdown">
+            <div class="lang-option" onclick="changeLang('en')">
+                <span>🇬🇧</span>
+                <span>English</span>
+            </div>
+            <div class="lang-option" onclick="changeLang('fr')">
+                <span>🇫🇷</span>
+                <span>Français</span>
+            </div>
+            <div class="lang-option" onclick="changeLang('ar')">
+                <span>🇲🇦</span>
+                <span>العربية</span>
+            </div>
+            <div class="lang-option" onclick="changeLang('th')">
+                <span>🇹🇭</span>
+                <span>ไทย</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="hero-blob blob-1"></div>
+            <div class="hero-blob blob-2"></div>
+            <div class="hero-blob blob-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-icon">
+                <svg class="icon-xl" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+                </svg>
+            </div>
+            <h1 class="hero-title" data-i18n="hero.title">ArkadyaApps</h1>
+            <p class="hero-tagline" data-i18n="hero.tagline">Innovating Tomorrow's Technology Today</p>
+            <div class="spec-badges">
+                <span class="spec-badge">
+                    <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+                    </svg>
+                    <span data-i18n="hero.spec1">Mobile Apps</span>
+                </span>
+                <span class="spec-badge">
+                    <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+                    </svg>
+                    <span data-i18n="hero.spec2">Web Applications</span>
+                </span>
+                <span class="spec-badge">
+                    <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+                    </svg>
+                    <span data-i18n="hero.spec3">AI Content</span>
+                </span>
+                <span class="spec-badge">
+                    <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+                    </svg>
+                    <span data-i18n="hero.spec4">Crypto</span>
+                </span>
+            </div>
+            <a href="#contact" class="cta-btn" data-i18n="hero.cta">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">
+                    <svg class="icon-lg" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <h2 class="section-title">
+                    <span data-i18n="about.title">About</span>
+                    <span class="highlight" data-i18n="about.highlight">ArkadyaApps</span>
+                </h2>
+                <p class="section-subtitle" data-i18n="about.subtitle">Led by Gregory Levakis, we're a French tech company pushing boundaries in digital innovation.</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="feature-icon">
+                        <svg class="icon-lg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title" data-i18n="about.feature1.title">Global Presence</h3>
+                    <p class="feature-desc" data-i18n="about.feature1.desc">Operating across France, Morocco, and Thailand with international expertise.</p>
+                </div>
+
+                <div class="card">
+                    <div class="feature-icon">
+                        <svg class="icon-lg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title" data-i18n="about.feature2.title">Focused Innovation</h3>
+                    <p class="feature-desc" data-i18n="about.feature2.desc">Specialized in cutting-edge mobile, web, AI, and blockchain technologies.</p>
+                </div>
+
+                <div class="card">
+                    <div class="feature-icon">
+                        <svg class="icon-lg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title" data-i18n="about.feature3.title">Rapid Execution</h3>
+                    <p class="feature-desc" data-i18n="about.feature3.desc">Agile development approach delivering results that exceed expectations.</p>
+                </div>
+            </div>
+
+            <div class="card leader-card">
+                <img src="https://customer-assets.emergentagent.com/job_54245aee-94bf-41b2-bce2-e38b71b3e2d6/artifacts/wl1gxoax_WhatsApp%20Image%202025-10-19%20at%2019.47.40_b601757f.jpg" 
+                     alt="Gregory Levakis" 
+                     class="leader-photo">
+                <h3 class="leader-name" data-i18n="about.leader.name">Gregory Levakis</h3>
+                <p class="leader-title" data-i18n="about.leader.title">Founder & CEO</p>
+                <p class="leader-bio" data-i18n="about.leader.bio">Leading operations across multiple continents, bringing innovative tech solutions to life with expertise in mobile development, web applications, AI, and blockchain technology.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section class="work" id="work">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">
+                    <svg class="icon-lg" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
+                    </svg>
+                </div>
+                <h2 class="section-title">
+                    <span data-i18n="work.title">Our</span>
+                    <span class="highlight" data-i18n="work.highlight">Work</span>
+                </h2>
+                <p class="section-subtitle" data-i18n="work.subtitle">Explore our portfolio of innovative projects and successful implementations across multiple industries.</p>
+            </div>
+
+            <div class="work-tabs">
+                <button class="tab-btn active" onclick="switchTab('ongoing')" id="tab-ongoing">
+                    <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+                    </svg>
+                    <span data-i18n="work.tab1">Ongoing Projects</span>
+                </button>
+                <button class="tab-btn" onclick="switchTab('portfolio')" id="tab-portfolio">
+                    <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
+                    </svg>
+                    <span data-i18n="work.tab2">Portfolio</span>
+                </button>
+            </div>
+
+            <!-- Ongoing Projects Tab -->
+            <div class="tab-content active" id="content-ongoing">
+                <div class="project-nav">
+                    <button class="project-btn active" onclick="selectProject(0)">Winwai</button>
+                    <button class="project-btn" onclick="selectProject(1)">RafflX</button>
+                    <button class="project-btn" onclick="selectProject(2)">Wassal.io</button>
+                    <button class="project-btn" onclick="selectProject(3)">Fragma Society</button>
+                </div>
+
+                <div id="project-display"></div>
+            </div>
+
+            <!-- Portfolio Tab -->
+            <div class="tab-content" id="content-portfolio">
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="https://customer-assets.emergentagent.com/job_54245aee-94bf-41b2-bce2-e38b71b3e2d6/artifacts/feqvups8_Capture.JPG" alt="RafflX Platform">
+                        <div class="portfolio-overlay">
+                            <h4 class="portfolio-name">RafflX Platform</h4>
+                            <p class="portfolio-category">
+                                <span style="width: 0.5rem; height: 0.5rem; background: var(--primary); border-radius: 50%; display: inline-block;"></span>
+                                <span data-i18n="work.portfolio.cat1">Raffle & Contest</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item">
+                        <img src="https://customer-assets.emergentagent.com/job_54245aee-94bf-41b2-bce2-e38b71b3e2d6/artifacts/hvqq7s3q_Capture1.JPG" alt="Wandr Experience">
+                        <div class="portfolio-overlay">
+                            <h4 class="portfolio-name">Wandr Experience</h4>
+                            <p class="portfolio-category">
+                                <span style="width: 0.5rem; height: 0.5rem; background: var(--primary); border-radius: 50%; display: inline-block;"></span>
+                                <span data-i18n="work.portfolio.cat2">Travel & Experience</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item">
+                        <img src="https://customer-assets.emergentagent.com/job_54245aee-94bf-41b2-bce2-e38b71b3e2d6/artifacts/vgswahhi_WhatsApp%20Image%202025-11-09%20at%2020.05.06_25994c8e.jpg" alt="Electronics Platform">
+                        <div class="portfolio-overlay">
+                            <h4 class="portfolio-name">Electronics Platform</h4>
+                            <p class="portfolio-category">
+                                <span style="width: 0.5rem; height: 0.5rem; background: var(--primary); border-radius: 50%; display: inline-block;"></span>
+                                <span data-i18n="work.portfolio.cat3">E-commerce Platform</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">
+                    <svg class="icon-lg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </div>
+                <h2 class="section-title">
+                    <span data-i18n="contact.title">Get In</span>
+                    <span class="highlight" data-i18n="contact.highlight">Touch</span>
+                </h2>
+                <p class="section-subtitle" data-i18n="contact.subtitle">Reach out to us through any of our regional offices or via email.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="card contact-card">
+                    <div class="contact-header">
+                        <div class="contact-icon">
+                            <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </div>
+                        <span class="region-flag">🇫🇷</span>
+                    </div>
+                    <h3 class="region-title">
+                        <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        <span data-i18n="contact.france">France</span>
+                    </h3>
+                    <div class="contact-detail">
+                        <div class="contact-label" data-i18n="contact.phone">Phone</div>
+                        <div class="contact-value">
+                            <a href="tel:+33647442574" class="contact-link">+33 6 47 44 25 74</a>
+                            <button class="copy-btn" onclick="copyText('+33647442574')">
+                                <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card contact-card">
+                    <div class="contact-header">
+                        <div class="contact-icon">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                            </svg>
+                        </div>
+                        <span class="region-flag">🇹🇭</span>
+                    </div>
+                    <h3 class="region-title">
+                        <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        <span data-i18n="contact.thailand">Thailand</span>
+                    </h3>
+                    <div class="contact-detail">
+                        <div class="contact-label" data-i18n="contact.whatsapp">WhatsApp</div>
+                        <div class="contact-value">
+                            <a href="https://wa.me/66986212033" target="_blank" class="contact-link">+66 98 621 20 33</a>
+                            <button class="copy-btn" onclick="copyText('+66986212033')">
+                                <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card contact-card">
+                    <div class="contact-header">
+                        <div class="contact-icon">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                            </svg>
+                        </div>
+                        <span class="region-flag">🇲🇦</span>
+                    </div>
+                    <h3 class="region-title">
+                        <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        <span data-i18n="contact.morocco">Morocco</span>
+                    </h3>
+                    <div class="contact-detail">
+                        <div class="contact-label" data-i18n="contact.whatsapp">WhatsApp</div>
+                        <div class="contact-value">
+                            <a href="https://wa.me/212779815393" target="_blank" class="contact-link">+212 779 81 53 93</a>
+                            <button class="copy-btn" onclick="copyText('+212779815393')">
+                                <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card email-card">
+                <div class="email-content">
+                    <div class="email-icon">
+                        <svg class="icon-xl" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <div class="email-info">
+                        <h3 class="email-title" data-i18n="contact.emailTitle">Email Us</h3>
+                        <a href="mailto:arkadyaproperties@gmail.com" class="email-link">arkadyaproperties@gmail.com</a>
+                    </div>
+                    <button class="email-btn" onclick="copyText('arkadyaproperties@gmail.com')" data-i18n="contact.copyEmail">Copy Email</button>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <h3 class="direct-contact-title" data-i18n="contact.directTitle">Direct Contact</h3>
+                <div class="direct-contact-grid">
+                    <a href="https://wa.me/66986212033" target="_blank" class="direct-contact-link">
+                        <div class="card whatsapp-card">
+                            <div class="direct-contact-content">
+                                <div class="direct-icon whatsapp-icon-bg">
+                                    <svg class="icon-xl" viewBox="0 0 24 24" fill="#25d366">
+                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                                    </svg>
+                                </div>
+                                <div class="direct-info">
+                                    <div class="direct-label" data-i18n="contact.whatsapp">WhatsApp</div>
+                                    <div class="direct-value">+66 98 621 20 33</div>
+                                </div>
+                                <svg class="icon arrow-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://line.me/ti/p/~arkadyaapps" target="_blank" class="direct-contact-link">
+                        <div class="card line-card">
+                            <div class="direct-contact-content">
+                                <div class="direct-icon line-icon-bg">
+                                    <svg class="icon-xl" viewBox="0 0 24 24" fill="#06c94b">
+                                        <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+                                    </svg>
+                                </div>
+                                <div class="direct-info">
+                                    <div class="direct-label" data-i18n="contact.line">LINE</div>
+                                    <div class="direct-value">@arkadyaapps</div>
+                                </div>
+                                <svg class="icon arrow-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-icon">
+                        <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="footer-title">ArkadyaApps</div>
+                        <div class="footer-tagline" data-i18n="footer.tagline">Tech Innovation</div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    <div class="footer-text">&copy; <span id="year"></span> ArkadyaApps. <span data-i18n="footer.copyright">All rights reserved.</span></div>
+                    <div class="footer-powered" data-i18n="footer.powered">Powered by Gregory Levakis</div>
+                </div>
+            </div>
+            <div class="decorative-line">
+                <div class="line-segment"></div>
+                <div class="dot-group">
+                    <div class="dot dot-1"></div>
+                    <div class="dot dot-2"></div>
+                    <div class="dot dot-3"></div>
+                </div>
+                <div class="line-segment reverse"></div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Projects Data
+        const projects = [
+            {
+                name: 'Winwai',
+                url: 'https://rewards-platform-3.preview.emergentagent.com/',
+                category: { en: 'Rewards Platform', fr: 'Plateforme de récompenses', ar: 'منصة المكافآت', th: 'แพลตฟอร์มรางวัล' },
+                description: { 
+                    en: 'A comprehensive rewards and loyalty platform enabling businesses to engage customers through gamification and incentives.',
+                    fr: 'Une plateforme complète de récompenses et de fidélité permettant aux entreprises d\'engager les clients grâce à la gamification et aux incitations.',
+                    ar: 'منصة شاملة للمكافآت والولاء تمكن الشركات من إشراك العملاء من خلال اللعب والحوافز.',
+                    th: 'แพลตฟอร์มรางวัลและความภักดีที่ครอบคลุมช่วยให้ธุรกิจมีส่วนร่วมกับลูกค้าผ่านการเล่นเกมและสิ่งจูงใจ'
+                }
+            },
+            {
+                name: 'RafflX',
+                url: 'https://rafflx.lovable.app',
+                category: { en: 'Raffle Platform', fr: 'Plateforme de tombola', ar: 'منصة السحوبات', th: 'แพลตฟอร์มการจับฉลาก' },
+                description: {
+                    en: 'An innovative raffle and contest platform for running secure, transparent prize draws and promotional campaigns.',
+                    fr: 'Une plateforme innovante de tombola et de concours pour organiser des tirages au sort sécurisés et transparents et des campagnes promotionnelles.',
+                    ar: 'منصة مبتكرة للسحوبات والمسابقات لإجراء سحوبات جوائز آمنة وشفافة وحملات ترويجية.',
+                    th: 'แพลตฟอร์มการจับฉลากและการประกวดที่เป็นนวัตกรรมสำหรับการจัดการจับรางวัลที่ปลอดภัยและโปร่งใสและแคมเปญส่งเสริมการขาย'
+                }
+            },
+            {
+                name: 'Wassal.io',
+                url: 'http://wassal.io/',
+                category: { en: 'Delivery Platform', fr: 'Plateforme de livraison', ar: 'منصة التوصيل', th: 'แพลตฟอร์มจัดส่ง' },
+                description: {
+                    en: 'A modern delivery and logistics solution connecting customers with local services and products.',
+                    fr: 'Une solution moderne de livraison et de logistique connectant les clients aux services et produits locaux.',
+                    ar: 'حل حديث للتوصيل واللوجستيات يربط العملاء بالخدمات والمنتجات المحلية.',
+                    th: 'โซลูชันการจัดส่งและโลจิสติกส์สมัยใหม่ที่เชื่อมต่อลูกค้ากับบริการและผลิตภัณฑ์ในท้องถิ่น'
+                }
+            },
+            {
+                name: 'Fragma Society',
+                url: 'https://fragmasociety.com/',
+                category: { en: 'Community Platform', fr: 'Plateforme communautaire', ar: 'منصة المجتمع', th: 'แพลตฟอร์มชุมชน' },
+                description: {
+                    en: 'An exclusive community platform connecting members with shared interests, events, and networking opportunities.',
+                    fr: 'Une plateforme communautaire exclusive connectant les membres avec des intérêts partagés, des événements et des opportunités de réseautage.',
+                    ar: 'منصة مجتمع حصرية تربط الأعضاء بالاهتمامات المشتركة والأحداث وفرص التواصل.',
+                    th: 'แพลตฟอร์มชุมชนพิเศษที่เชื่อมต่อสมาชิกที่มีความสนใจร่วมกัน กิจกรรม และโอกาสในการสร้างเครือข่าย'
+                }
+            }
+        ];
+
+        let currentProject = 0;
+        let currentSlide = 0;
+        let currentLang = 'en';
+
+        // Translations
+        const translations = {
+            en: {
+                'hero.title': 'ArkadyaApps',
+                'hero.tagline': 'Innovating Tomorrow\'s Technology Today',
+                'hero.cta': 'Get In Touch',
+                'hero.spec1': 'Mobile Apps',
+                'hero.spec2': 'Web Applications',
+                'hero.spec3': 'AI Content',
+                'hero.spec4': 'Crypto',
+                'about.title': 'About',
+                'about.highlight': 'ArkadyaApps',
+                'about.subtitle': 'Led by Gregory Levakis, we\'re a French tech company pushing boundaries in digital innovation.',
+                'about.feature1.title': 'Global Presence',
+                'about.feature1.desc': 'Operating across France, Morocco, and Thailand with international expertise.',
+                'about.feature2.title': 'Focused Innovation',
+                'about.feature2.desc': 'Specialized in cutting-edge mobile, web, AI, and blockchain technologies.',
+                'about.feature3.title': 'Rapid Execution',
+                'about.feature3.desc': 'Agile development approach delivering results that exceed expectations.',
+                'about.leader.name': 'Gregory Levakis',
+                'about.leader.title': 'Founder & CEO',
+                'about.leader.bio': 'Leading operations across multiple continents, bringing innovative tech solutions to life with expertise in mobile development, web applications, AI, and blockchain technology.',
+                'work.title': 'Our',
+                'work.highlight': 'Work',
+                'work.subtitle': 'Explore our portfolio of innovative projects and successful implementations across multiple industries.',
+                'work.tab1': 'Ongoing Projects',
+                'work.tab2': 'Portfolio',
+                'work.visitSite': 'Visit Live Site',
+                'work.screenshot': 'Screenshot Coming Soon',
+                'work.portfolio.cat1': 'Raffle & Contest',
+                'work.portfolio.cat2': 'Travel & Experience',
+                'work.portfolio.cat3': 'E-commerce Platform',
+                'contact.title': 'Get In',
+                'contact.highlight': 'Touch',
+                'contact.subtitle': 'Reach out to us through any of our regional offices or via email.',
+                'contact.france': 'France',
+                'contact.thailand': 'Thailand',
+                'contact.morocco': 'Morocco',
+                'contact.phone': 'Phone',
+                'contact.whatsapp': 'WhatsApp',
+                'contact.line': 'LINE',
+                'contact.emailTitle': 'Email Us',
+                'contact.copyEmail': 'Copy Email',
+                'contact.directTitle': 'Direct Contact',
+                'footer.tagline': 'Tech Innovation',
+                'footer.copyright': 'All rights reserved.',
+                'footer.powered': 'Powered by Gregory Levakis'
+            },
+            fr: {
+                'hero.title': 'ArkadyaApps',
+                'hero.tagline': 'Innover la technologie de demain aujourd\'hui',
+                'hero.cta': 'Nous contacter',
+                'hero.spec1': 'Applications mobiles',
+                'hero.spec2': 'Applications Web',
+                'hero.spec3': 'Contenu IA',
+                'hero.spec4': 'Crypto',
+                'about.title': 'À propos de',
+                'about.highlight': 'ArkadyaApps',
+                'about.subtitle': 'Dirigée par Gregory Levakis, nous sommes une entreprise technologique française repoussant les limites de l\'innovation numérique.',
+                'about.feature1.title': 'Présence mondiale',
+                'about.feature1.desc': 'Opérant en France, au Maroc et en Thaïlande avec une expertise internationale.',
+                'about.feature2.title': 'Innovation ciblée',
+                'about.feature2.desc': 'Spécialisé dans les technologies mobiles, web, IA et blockchain de pointe.',
+                'about.feature3.title': 'Exécution rapide',
+                'about.feature3.desc': 'Approche de développement agile offrant des résultats qui dépassent les attentes.',
+                'about.leader.name': 'Gregory Levakis',
+                'about.leader.title': 'Fondateur et PDG',
+                'about.leader.bio': 'Dirigeant des opérations sur plusieurs continents, donnant vie à des solutions technologiques innovantes avec une expertise en développement mobile, applications web, IA et technologie blockchain.',
+                'work.title': 'Nos',
+                'work.highlight': 'Réalisations',
+                'work.subtitle': 'Découvrez notre portefeuille de projets innovants et de mises en œuvre réussies dans plusieurs secteurs.',
+                'work.tab1': 'Projets Actuels',
+                'work.tab2': 'Portfolio',
+                'work.visitSite': 'Visiter le site',
+                'work.screenshot': 'Capture d\'écran à venir',
+                'work.portfolio.cat1': 'Tombola & Concours',
+                'work.portfolio.cat2': 'Voyage & Expérience',
+                'work.portfolio.cat3': 'Plateforme E-commerce',
+                'contact.title': 'Entrer en',
+                'contact.highlight': 'contact',
+                'contact.subtitle': 'Contactez-nous via l\'un de nos bureaux régionaux ou par e-mail.',
+                'contact.france': 'France',
+                'contact.thailand': 'Thaïlande',
+                'contact.morocco': 'Maroc',
+                'contact.phone': 'Téléphone',
+                'contact.whatsapp': 'WhatsApp',
+                'contact.line': 'LINE',
+                'contact.emailTitle': 'Nous envoyer un e-mail',
+                'contact.copyEmail': 'Copier l\'e-mail',
+                'contact.directTitle': 'Contact Direct',
+                'footer.tagline': 'Innovation technologique',
+                'footer.copyright': 'Tous droits réservés.',
+                'footer.powered': 'Propulsé par Gregory Levakis'
+            },
+            ar: {
+                'hero.title': 'ArkadyaApps',
+                'hero.tagline': 'ابتكار تكنولوجيا الغد اليوم',
+                'hero.cta': 'تواصل معنا',
+                'hero.spec1': 'تطبيقات الجوال',
+                'hero.spec2': 'تطبيقات الويب',
+                'hero.spec3': 'محتوى الذكاء الاصطناعي',
+                'hero.spec4': 'العملات المشفرة',
+                'about.title': 'حول',
+                'about.highlight': 'ArkadyaApps',
+                'about.subtitle': 'بقيادة غريغوري ليفاكيس، نحن شركة تقنية فرنسية تدفع حدود الابتكار الرقمي.',
+                'about.feature1.title': 'حضور عالمي',
+                'about.feature1.desc': 'العمل عبر فرنسا والمغرب وتايلاند مع الخبرة الدولية.',
+                'about.feature2.title': 'ابتكار مركّز',
+                'about.feature2.desc': 'متخصصون في تقنيات الهاتف المحمول والويب والذكاء الاصطناعي وبلوكتشين المتطورة.',
+                'about.feature3.title': 'تنفيذ سريع',
+                'about.feature3.desc': 'نهج تطوير رشيق يقدم نتائج تتجاوز التوقعات.',
+                'about.leader.name': 'غريغوري ليفاكيس',
+                'about.leader.title': 'المؤسس والرئيس التنفيذي',
+                'about.leader.bio': 'قيادة العمليات عبر قارات متعددة، وإحياء الحلول التقنية المبتكرة بخبرة في تطوير الجوال وتطبيقات الويب والذكاء الاصطناعي وتقنية بلوكتشين.',
+                'work.title': 'أعمالنا',
+                'work.highlight': 'المنجزة',
+                'work.subtitle': 'استكشف محفظتنا من المشاريع المبتكرة والتنفيذات الناجحة عبر عدة صناعات.',
+                'work.tab1': 'المشاريع الحالية',
+                'work.tab2': 'المحفظة',
+                'work.visitSite': 'زيارة الموقع المباشر',
+                'work.screenshot': 'لقطة الشاشة قادمة قريباً',
+                'work.portfolio.cat1': 'السحوبات والمسابقات',
+                'work.portfolio.cat2': 'السفر والتجربة',
+                'work.portfolio.cat3': 'منصة التجارة الإلكترونية',
+                'contact.title': 'ابقى على',
+                'contact.highlight': 'تواصل',
+                'contact.subtitle': 'تواصل معنا من خلال أي من مكاتبنا الإقليمية أو عبر البريد الإلكتروني.',
+                'contact.france': 'فرنسا',
+                'contact.thailand': 'تايلاند',
+                'contact.morocco': 'المغرب',
+                'contact.phone': 'هاتف',
+                'contact.whatsapp': 'واتساب',
+                'contact.line': 'لاين',
+                'contact.emailTitle': 'راسلنا عبر البريد الإلكتروني',
+                'contact.copyEmail': 'نسخ البريد الإلكتروني',
+                'contact.directTitle': 'اتصال مباشر',
+                'footer.tagline': 'الابتكار التقني',
+                'footer.copyright': 'جميع الحقوق محفوظة.',
+                'footer.powered': 'مدعوم من غريغوري ليفاكيس'
+            },
+            th: {
+                'hero.title': 'ArkadyaApps',
+                'hero.tagline': 'นวัตกรรมเทคโนโลยีแห่งอนาคตในวันนี้',
+                'hero.cta': 'ติดต่อเรา',
+                'hero.spec1': 'แอปมือถือ',
+                'hero.spec2': 'เว็บแอปพลิเคชัน',
+                'hero.spec3': 'เนื้อหา AI',
+                'hero.spec4': 'คริปโต',
+                'about.title': 'เกี่ยวกับ',
+                'about.highlight': 'ArkadyaApps',
+                'about.subtitle': 'นำโดย Gregory Levakis เราเป็นบริษัทเทคโนโลยีจากฝรั่งเศสที่ก้าวข้ามขีดจำกัดของนวัตกรรมดิจิทัล',
+                'about.feature1.title': 'การแสดงตนระดับโลก',
+                'about.feature1.desc': 'ดำเนินงานในฝรั่งเศส โมร็อกโก และไทยด้วยความเชี่ยวชาญระดับนานาชาติ',
+                'about.feature2.title': 'นวัตกรรมที่มุ่งเน้น',
+                'about.feature2.desc': 'เชี่ยวชาญด้านเทคโนโลยีมือถือ เว็บ AI และบล็อกเชนที่ทันสมัย',
+                'about.feature3.title': 'การดำเนินการที่รวดเร็ว',
+                'about.feature3.desc': 'แนวทางการพัฒนาแบบ Agile ที่ให้ผลลัพธ์เกินความคาดหมาย',
+                'about.leader.name': 'Gregory Levakis',
+                'about.leader.title': 'ผู้ก่อตั้งและซีอีโอ',
+                'about.leader.bio': 'นำการดำเนินงานข้ามหลายทวีป นำโซลูชันเทคโนโลยีที่เป็นนวัตกรรมมาสู่ชีวิตด้วยความเชี่ยวชาญในการพัฒนามือถือ เว็บแอปพลิเคชัน AI และเทคโนโลยีบล็อกเชน',
+                'work.title': 'ผลงาน',
+                'work.highlight': 'ของเรา',
+                'work.subtitle': 'สำรวจพอร์ตโฟลิโอของโครงการที่เป็นนวัตกรรมและมีความสำเร็จในหลายอุตสาหกรรม',
+                'work.tab1': 'โครงการปัจจุบัน',
+                'work.tab2': 'พอร์ตโฟลิโอ',
+                'work.visitSite': 'เยี่ยมชมเว็บไซต์',
+                'work.screenshot': 'ภาพหน้าจอกำลังมา',
+                'work.portfolio.cat1': 'การจับฉลากและการประกวด',
+                'work.portfolio.cat2': 'การท่องเที่ยวและประสบการณ์',
+                'work.portfolio.cat3': 'แพลตฟอร์มอีคอมเมิร์ซ',
+                'contact.title': 'ติดต่อ',
+                'contact.highlight': 'เรา',
+                'contact.subtitle': 'ติดต่อเราผ่านสำนักงานในภูมิภาคของเราหรือทางอีเมล',
+                'contact.france': 'ฝรั่งเศส',
+                'contact.thailand': 'ไทย',
+                'contact.morocco': 'โมร็อกโก',
+                'contact.phone': 'โทรศัพท์',
+                'contact.whatsapp': 'วอทส์แอพ',
+                'contact.line': 'ไลน์',
+                'contact.emailTitle': 'ส่งอีเมลถึงเรา',
+                'contact.copyEmail': 'คัดลอกอีเมล',
+                'contact.directTitle': 'ติดต่อโดยตรง',
+                'footer.tagline': 'นวัตกรรมเทคโนโลยี',
+                'footer.copyright': 'สงวนลิขสิทธิ์',
+                'footer.powered': 'ขับเคลื่อนโดย Gregory Levakis'
+            }
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('year').textContent = new Date().getFullYear();
+            detectLanguage();
+            selectProject(0);
+        });
+
+        // Detect user language
+        function detectLanguage() {
+            const savedLang = localStorage.getItem('preferred-language');
+            if (savedLang) {
+                changeLang(savedLang);
+                return;
+            }
+
+            // Try to detect from IP (simplified for standalone HTML)
+            const browserLang = navigator.language.split('-')[0];
+            if (browserLang === 'fr') changeLang('fr');
+            else if (browserLang === 'ar') changeLang('ar');
+            else if (browserLang === 'th') changeLang('th');
+            else changeLang('en');
+        }
+
+        // Toggle language dropdown
+        function toggleLangDropdown() {
+            document.getElementById('lang-dropdown').classList.toggle('show');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.lang-switcher')) {
+                document.getElementById('lang-dropdown').classList.remove('show');
+            }
+        });
+
+        // Change language
+        function changeLang(lang) {
+            currentLang = lang;
+            localStorage.setItem('preferred-language', lang);
+
+            // Update HTML dir attribute for RTL
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+            // Update all i18n elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            // Update language button
+            const langNames = { en: 'English', fr: 'Français', ar: 'العربية', th: 'ไทย' };
+            const langFlags = { en: '🇬🇧', fr: '🇫🇷', ar: '🇲🇦', th: '🇹🇭' };
+            document.getElementById('current-lang-name').textContent = langNames[lang];
+            document.getElementById('current-lang-flag').textContent = langFlags[lang];
+
+            // Update active state in dropdown
+            document.querySelectorAll('.lang-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            document.querySelectorAll('.lang-option')[['en', 'fr', 'ar', 'th'].indexOf(lang)].classList.add('active');
+
+            // Close dropdown
+            document.getElementById('lang-dropdown').classList.remove('show');
+
+            // Re-render current project
+            selectProject(currentProject);
+        }
+
+        // Switch tabs
+        function switchTab(tab) {
+            // Update tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('tab-' + tab).classList.add('active');
+
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById('content-' + tab).classList.add('active');
+        }
+
+        // Select project
+        function selectProject(index) {
+            currentProject = index;
+            currentSlide = 0;
+
+            // Update project buttons
+            document.querySelectorAll('.project-btn').forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+
+            // Render project
+            renderProject();
+        }
+
+        // Render project
+        function renderProject() {
+            const project = projects[currentProject];
+            const lang = currentLang;
+
+            const html = `
+                <div class="card project-card">
+                    <div class="project-header">
+                        <h3 class="project-name">${project.name}</h3>
+                        <span class="badge badge-category">${project.category[lang]}</span>
+                        <span class="badge badge-live">
+                            <span class="live-dot"></span>
+                            Live
+                        </span>
+                    </div>
+                    <p class="project-desc">${project.description[lang]}</p>
+                    <a href="${project.url}" target="_blank" class="project-link">
+                        <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                        <span data-i18n="work.visitSite">${translations[lang]['work.visitSite']}</span>
+                    </a>
+                </div>
+
+                <div class="carousel">
+                    <div class="carousel-container">
+                        <div class="carousel-slide">
+                            <div class="placeholder">
+                                <div class="placeholder-icon">
+                                    <svg class="icon-xl" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                                        <polyline points="21 15 16 10 5 21"/>
+                                    </svg>
+                                </div>
+                                <p style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;" data-i18n="work.screenshot">${translations[lang]['work.screenshot']}</p>
+                                <p style="font-size: 0.875rem; color: var(--muted-foreground);">${['Homepage', 'Page 1', 'Page 2'][currentSlide]}</p>
+                            </div>
+                            <button class="carousel-nav prev" onclick="prevSlide()">
+                                <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <polyline points="15 18 9 12 15 6"/>
+                                </svg>
+                            </button>
+                            <button class="carousel-nav next" onclick="nextSlide()">
+                                <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="carousel-indicators">
+                            ${[0, 1, 2].map(i => `<div class="indicator ${i === currentSlide ? 'active' : ''}" onclick="goToSlide(${i})"></div>`).join('')}
+                        </div>
+                        <div class="carousel-label">
+                            ${['Homepage', 'Page 1', 'Page 2'][currentSlide]}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('project-display').innerHTML = html;
+        }
+
+        // Carousel navigation
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % 3;
+            renderProject();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + 3) % 3;
+            renderProject();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            renderProject();
+        }
+
+        // Copy to clipboard
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert(translations[currentLang]['contact.copyEmail'] + '!');
+            });
+        }
+
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
