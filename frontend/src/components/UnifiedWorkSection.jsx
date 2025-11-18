@@ -48,6 +48,18 @@ export const UnifiedWorkSection = () => {
         { name: 'Page 1', placeholder: true },
         { name: 'Page 2', placeholder: true }
       ]
+    },
+    {
+      name: 'Fragma Society',
+      url: 'https://fragmasociety.com/',
+      description: t.work.ongoing[3].description,
+      category: t.work.ongoing[3].category,
+      status: 'Live',
+      pages: [
+        { name: 'Homepage', placeholder: true },
+        { name: 'Page 1', placeholder: true },
+        { name: 'Page 2', placeholder: true }
+      ]
     }
   ];
 
