@@ -2496,6 +2496,12 @@
 
             // Re-render current project
             selectProject(currentProject);
+
+            // Re-render quote calculator
+            if (typeof renderQuoteOptions === 'function') {
+                renderQuoteOptions();
+                updateSummary();
+            }
         }
 
         // Switch tabs
