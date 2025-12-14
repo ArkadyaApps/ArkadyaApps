@@ -105,185 +105,89 @@
 user_problem_statement: "Test the ArkadyaApps website at file:///app/index.html - a standalone static HTML file with multilingual contact page and interactive Quotes Calculator. Test navigation menu, language switcher (4 languages with RTL for Arabic), quotes calculator (currency selector, platform tabs, option selection), contact section, and responsive design."
 
 frontend:
-  - task: "Hero Section Testing"
+  - task: "Navigation Menu Testing"
     implemented: true
-    working: true
-    file: "/app/frontend/src/components/HeroSection.jsx"
+    working: "NA"
+    file: "/app/index.html"
     stuck_count: 0
     priority: "high"
-    needs_retesting: false
+    needs_retesting: true
     status_history:
         -working: "NA"
         -agent: "testing"
-        -comment: "Initial testing setup - Hero section with ArkadyaApps branding, animated logo, specialization tags, and Get In Touch button needs testing"
-        -working: true
-        -agent: "testing"
-        -comment: "✅ PASSED - All hero section elements working perfectly: ArkadyaApps branding visible, animated floating logo found, all 4 specialization tags (Mobile Apps, Web Applications, AI Content, Crypto) visible, Get In Touch button functional with smooth scroll to contact section"
-
-  - task: "About Section Testing"
-    implemented: true
-    working: true
-    file: "/app/frontend/src/components/AboutSection.jsx"
-    stuck_count: 0
-    priority: "high"
-    needs_retesting: false
-    status_history:
-        -working: "NA"
-        -agent: "testing"
-        -comment: "Initial testing setup - About section with feature cards, hover effects, and Gregory Levakis leadership card needs testing"
-        -working: true
-        -agent: "testing"
-        -comment: "✅ PASSED - All about section elements working perfectly: About ArkadyaApps heading found, all 3 feature cards (Global Presence, Focused Innovation, Rapid Execution) visible with working hover effects, Gregory Levakis leadership card displayed with CEO title"
-
-  - task: "Contact Section Testing"
-    implemented: true
-    working: true
-    file: "/app/frontend/src/components/ContactSection.jsx"
-    stuck_count: 0
-    priority: "high"
-    needs_retesting: false
-    status_history:
-        -working: "NA"
-        -agent: "testing"
-        -comment: "Initial testing setup - Contact section with regional cards, phone/WhatsApp links, email card, and copy buttons needs testing"
-        -working: true
-        -agent: "testing"
-        -comment: "✅ PASSED - Contact section core functionality working: Get In Touch heading visible, all 3 phone/WhatsApp links functional (France: tel:+33647442574, Thailand: https://wa.me/66986212033, Morocco: https://wa.me/212779815393), email card with arkadyaproperties@gmail.com clickable, 4 copy buttons functional. Minor: Regional card headers not detected by test selectors but functionality confirmed through working links"
-
-  - task: "Footer Testing"
-    implemented: true
-    working: true
-    file: "/app/frontend/src/components/Footer.jsx"
-    stuck_count: 0
-    priority: "medium"
-    needs_retesting: false
-    status_history:
-        -working: "NA"
-        -agent: "testing"
-        -comment: "Initial testing setup - Footer with branding and copyright needs testing"
-        -working: true
-        -agent: "testing"
-        -comment: "✅ PASSED - All footer elements working perfectly: ArkadyaApps branding found, copyright information displays '© 2025 ArkadyaApps', 'Powered by Gregory Levakis' text visible"
-
-  - task: "Responsive Design Testing"
-    implemented: true
-    working: true
-    file: "/app/frontend/src/pages/HomePage.jsx"
-    stuck_count: 0
-    priority: "high"
-    needs_retesting: false
-    status_history:
-        -working: "NA"
-        -agent: "testing"
-        -comment: "Initial testing setup - Mobile responsive design testing needed"
-        -working: true
-        -agent: "testing"
-        -comment: "✅ PASSED - Responsive design working well: Hero section fully responsive with heading visible on mobile (375x667), all 4 specialization tags visible on mobile, visual design elements (21 gradient effects, 5 animations, 19 SVG icons) working properly, smooth scrolling behavior confirmed"
+        -comment: "Initial testing setup - Navigation menu with 3 items (Our Work, Quotes, Get in Touch), logo display, and smooth scroll functionality needs testing"
 
   - task: "Language Switcher Testing"
     implemented: true
-    working: true
-    file: "/app/frontend/src/components/LanguageSwitcher.jsx"
+    working: "NA"
+    file: "/app/index.html"
     stuck_count: 0
     priority: "high"
-    needs_retesting: false
+    needs_retesting: true
     status_history:
         -working: "NA"
         -agent: "testing"
-        -comment: "Initial testing setup - Language switcher button, dropdown menu, and 4 languages (English, Français, العربية, ไทย) with flag icons need testing"
-        -working: true
-        -agent: "testing"
-        -comment: "✅ PASSED - Language switcher working perfectly: Button visible in top-right corner, dropdown menu opens successfully, all 4 languages found with correct flags (🇬🇧 English, 🇫🇷 Français, 🇲🇦 العربية, 🇹🇭 ไทย), responsive design works on mobile (language name hidden) and tablet (language name visible)"
+        -comment: "Initial testing setup - Language switcher with 4 languages (English, French, Arabic, Thai), dropdown functionality, and flag icons need testing"
 
-  - task: "Language Switching Functionality"
+  - task: "Language Switching and RTL Testing"
     implemented: true
-    working: true
-    file: "/app/frontend/src/contexts/LanguageContext.jsx"
+    working: "NA"
+    file: "/app/index.html"
     stuck_count: 0
     priority: "high"
-    needs_retesting: false
+    needs_retesting: true
     status_history:
         -working: "NA"
         -agent: "testing"
-        -comment: "Initial testing setup - Test switching to French, Arabic, Thai and back to English. Verify content translation in hero, about, and contact sections"
-        -working: true
-        -agent: "testing"
-        -comment: "✅ PASSED - Language switching working perfectly: French content loads correctly (tagline: 'Innover la technologie de demain aujourd'hui', CTA: 'Nous contacter'), Arabic content loads with proper RTL layout, Thai content displays correctly, switching back to English restores original content. All specialization tags translate properly in each language"
+        -comment: "Initial testing setup - Test switching between all 4 languages, verify Arabic enables RTL layout, and confirm all text elements change appropriately"
 
-  - task: "RTL Layout Testing"
+  - task: "Quotes Calculator Testing"
     implemented: true
-    working: true
-    file: "/app/frontend/src/components/AboutSection.jsx"
+    working: "NA"
+    file: "/app/index.html"
     stuck_count: 0
     priority: "high"
-    needs_retesting: false
+    needs_retesting: true
     status_history:
         -working: "NA"
         -agent: "testing"
-        -comment: "Initial testing setup - When Arabic is selected, verify RTL layout is applied and all text aligns properly from right to left"
-        -working: true
-        -agent: "testing"
-        -comment: "✅ PASSED - RTL layout working perfectly: When Arabic selected, dir='rtl' attribute applied to all sections (hero, about, contact, footer), text aligns properly from right to left, RTL works on desktop, mobile (390x844), and tablet (768x1024) viewports"
+        -comment: "Initial testing setup - Currency selector (THB, USD, EUR, MAD), platform tabs (Android, iOS/Apple, Both Platforms), option selection with checkboxes, summary panel, total calculation, clear button, and contact us button need comprehensive testing"
 
-  - task: "Language Persistence Testing"
+  - task: "Quotes Calculator Disabled Options Testing"
     implemented: true
-    working: true
-    file: "/app/frontend/src/contexts/LanguageContext.jsx"
+    working: "NA"
+    file: "/app/index.html"
     stuck_count: 0
     priority: "high"
-    needs_retesting: false
+    needs_retesting: true
     status_history:
         -working: "NA"
         -agent: "testing"
-        -comment: "Initial testing setup - Test language persistence in localStorage and after page refresh"
-        -working: true
-        -agent: "testing"
-        -comment: "✅ PASSED - Language persistence working perfectly: Selected language saved to localStorage as 'preferred-language', language persists after page refresh (French content still visible after reload), localStorage takes priority over geolocation detection"
+        -comment: "Initial testing setup - In 'Both Platforms' mode, verify 'Basic Personal Use App' is disabled (iOS not available) and other disabled option behaviors"
 
-  - task: "Content Translation Testing"
+  - task: "Contact Section Testing"
     implemented: true
-    working: true
-    file: "/app/frontend/src/contexts/LanguageContext.jsx"
+    working: "NA"
+    file: "/app/index.html"
     stuck_count: 0
     priority: "high"
-    needs_retesting: false
+    needs_retesting: true
     status_history:
         -working: "NA"
         -agent: "testing"
-        -comment: "Initial testing setup - Verify hero tagline, specialization tags, CTA button, section headings, contact labels, and footer text change in each language"
-        -working: true
-        -agent: "testing"
-        -comment: "✅ PASSED - Content translation working perfectly: All content translates correctly across languages - hero taglines, specialization tags (Mobile Apps→Applications mobiles→تطبيقات الجوال→แอปมือถือ), CTA buttons, section headings (About→À propos de→حول→เกี่ยวกับ), contact labels (Phone→Téléphone→هاتف→โทรศัพท์), footer taglines. Complete translation coverage verified"
+        -comment: "Initial testing setup - France, Thailand, Morocco contact info display, LINE link (https://lin.ee/z7zMWOj), and WhatsApp links verification needed"
 
-  - task: "Geolocation Detection Testing"
+  - task: "Responsive Design Testing"
     implemented: true
-    working: true
-    file: "/app/frontend/src/contexts/LanguageContext.jsx"
-    stuck_count: 0
-    priority: "medium"
-    needs_retesting: false
-    status_history:
-        -working: "NA"
-        -agent: "testing"
-        -comment: "Initial testing setup - Test geolocation detection via IP (France→French, Morocco→Arabic, Thailand→Thai, Others→English). Note: Limited testing capability due to fixed IP in test environment"
-        -working: true
-        -agent: "testing"
-        -comment: "✅ PASSED - Geolocation detection implemented correctly: Uses ipapi.co/json/ API for country detection, maps FR→French, MA→Arabic, TH→Thai, Others→English, localStorage preference overrides geolocation, graceful fallback to English on API failure. Code implementation verified and working as designed"
-
-  - task: "Our Work Portfolio Section Testing"
-    implemented: true
-    working: true
-    file: "/app/frontend/src/components/OurWorkSection.jsx"
+    working: "NA"
+    file: "/app/index.html"
     stuck_count: 0
     priority: "high"
-    needs_retesting: false
+    needs_retesting: true
     status_history:
         -working: "NA"
         -agent: "testing"
-        -comment: "Initial testing setup - New Our Work portfolio section with 3 project images, hover effects, multilingual support, and responsive design needs comprehensive testing"
-        -working: true
-        -agent: "testing"
-        -comment: "✅ PASSED - Our Work portfolio section working perfectly: Section positioned correctly between About and Contact sections, 'Our Work' heading with briefcase icon displays correctly, description text present, all 3 project images load correctly in 4:3 aspect ratio cards, 3-column grid on desktop, hover effects working (gradient overlay, external link icon, smooth scale animation), multilingual support implemented (English: 'Our Work', French: 'Nos Réalisations', Arabic: 'أعمالنا المنجزة' with RTL layout, Thai: 'ผลงานของเรา'), responsive design working (desktop 3-column, tablet adaptive, mobile single column), design consistency confirmed (teal/cyan gradients, glassmorphism cards, decorative dots). All requirements met successfully."
+        -comment: "Initial testing setup - Mobile viewport (375x800) testing for quotes calculator and overall responsive design verification needed"
 
 metadata:
   created_by: "testing_agent"
