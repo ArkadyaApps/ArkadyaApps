@@ -2524,6 +2524,7 @@
         function renderProject() {
             const project = projects[currentProject];
             const lang = currentLang;
+            const screenshotLabels = ['Screenshot 1', 'Screenshot 2', 'Screenshot 3'];
 
             const html = `
                 <div class="card project-card">
@@ -2549,17 +2550,7 @@
                 <div class="carousel">
                     <div class="carousel-container">
                         <div class="carousel-slide">
-                            <div class="placeholder">
-                                <div class="placeholder-icon">
-                                    <svg class="icon-xl" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                                        <circle cx="8.5" cy="8.5" r="1.5"/>
-                                        <polyline points="21 15 16 10 5 21"/>
-                                    </svg>
-                                </div>
-                                <p style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;" data-i18n="work.screenshot">${translations[lang]['work.screenshot']}</p>
-                                <p style="font-size: 0.875rem; color: var(--muted-foreground);">${['Homepage', 'Page 1', 'Page 2'][currentSlide]}</p>
-                            </div>
+                            <img src="${project.screenshots[currentSlide]}" alt="${project.name} Screenshot ${currentSlide + 1}" style="width: 100%; height: 100%; object-fit: cover;">
                             <button class="carousel-nav prev" onclick="prevSlide()">
                                 <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                     <polyline points="15 18 9 12 15 6"/>
@@ -2575,7 +2566,7 @@
                             ${[0, 1, 2].map(i => `<div class="indicator ${i === currentSlide ? 'active' : ''}" onclick="goToSlide(${i})"></div>`).join('')}
                         </div>
                         <div class="carousel-label">
-                            ${['Homepage', 'Page 1', 'Page 2'][currentSlide]}
+                            ${screenshotLabels[currentSlide]}
                         </div>
                     </div>
                 </div>
