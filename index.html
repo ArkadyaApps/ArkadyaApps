@@ -2549,8 +2549,11 @@
 
                 <div class="carousel">
                     <div class="carousel-container">
-                        <div class="carousel-slide">
-                            <img src="${project.screenshots[currentSlide]}" alt="${project.name} Screenshot ${currentSlide + 1}" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="carousel-slide" id="carousel-slide-container">
+                            <img src="${project.screenshots[currentSlide]}" 
+                                 alt="${project.name} Screenshot ${currentSlide + 1}" 
+                                 style="width: 100%; height: 100%; object-fit: cover;"
+                                 onerror="this.parentElement.innerHTML = '<div class=\\'placeholder\\'><div class=\\'placeholder-icon\\'><svg class=\\'icon-xl\\' fill=\\'none\\' stroke=\\'currentColor\\' stroke-width=\\'2\\' viewBox=\\'0 0 24 24\\'><rect x=\\'3\\' y=\\'3\\' width=\\'18\\' height=\\'18\\' rx=\\'2\\' ry=\\'2\\'/><circle cx=\\'8.5\\' cy=\\'8.5\\' r=\\'1.5\\'/><polyline points=\\'21 15 16 10 5 21\\'/></svg></div><p style=\\'font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;\\'>${project.name}</p><p style=\\'font-size: 0.875rem; color: var(--muted-foreground);\\'>Screenshot ${currentSlide + 1}</p></div><button class=\\'carousel-nav prev\\' onclick=\\'prevSlide()\\'><svg class=\\'icon\\' fill=\\'none\\' stroke=\\'currentColor\\' stroke-width=\\'2\\' viewBox=\\'0 0 24 24\\'><polyline points=\\'15 18 9 12 15 6\\'/></svg></button><button class=\\'carousel-nav next\\' onclick=\\'nextSlide()\\'><svg class=\\'icon\\' fill=\\'none\\' stroke=\\'currentColor\\' stroke-width=\\'2\\' viewBox=\\'0 0 24 24\\'><polyline points=\\'9 18 15 12 9 6\\'/></svg></button>'">
                             <button class="carousel-nav prev" onclick="prevSlide()">
                                 <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                     <polyline points="15 18 9 12 15 6"/>
