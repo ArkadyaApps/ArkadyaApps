@@ -1534,6 +1534,78 @@
         </div>
     </section>
 
+    <!-- Quotes Section -->
+    <section class="quotes-section" id="quotes">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">
+                    <svg class="icon-lg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+                    </svg>
+                </div>
+                <h2 class="section-title">
+                    <span data-i18n="quotes.title">Request a</span>
+                    <span class="highlight" data-i18n="quotes.highlight">Quote</span>
+                </h2>
+                <p class="section-subtitle" data-i18n="quotes.subtitle">Tell us about your project and we'll provide you with a customized quote tailored to your needs.</p>
+            </div>
+
+            <div class="quote-form">
+                <form id="quote-form" onsubmit="submitQuote(event)">
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="quotes.name">Your Name *</label>
+                        <input type="text" class="form-input" id="quote-name" required placeholder="John Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="quotes.email">Email Address *</label>
+                        <input type="email" class="form-input" id="quote-email" required placeholder="john@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="quotes.phone">Phone Number</label>
+                        <input type="tel" class="form-input" id="quote-phone" placeholder="+1 234 567 8900">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="quotes.service">Service Type *</label>
+                        <select class="form-select" id="quote-service" required>
+                            <option value="" data-i18n="quotes.selectService">Select a service...</option>
+                            <option value="mobile" data-i18n="quotes.mobile">Mobile App Development</option>
+                            <option value="web" data-i18n="quotes.web">Web Application</option>
+                            <option value="ai" data-i18n="quotes.ai">AI Content Solutions</option>
+                            <option value="crypto" data-i18n="quotes.crypto">Crypto & Blockchain</option>
+                            <option value="other" data-i18n="quotes.other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="quotes.budget">Estimated Budget</label>
+                        <select class="form-select" id="quote-budget">
+                            <option value="" data-i18n="quotes.selectBudget">Select budget range...</option>
+                            <option value="5k-10k">$5,000 - $10,000</option>
+                            <option value="10k-25k">$10,000 - $25,000</option>
+                            <option value="25k-50k">$25,000 - $50,000</option>
+                            <option value="50k+">$50,000+</option>
+                            <option value="discuss" data-i18n="quotes.discussBudget">Prefer to discuss</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="quotes.details">Project Details *</label>
+                        <textarea class="form-textarea" id="quote-details" required placeholder="Tell us about your project requirements..."></textarea>
+                    </div>
+
+                    <button type="submit" class="form-submit" id="quote-submit" data-i18n="quotes.submit">
+                        Submit Quote Request
+                    </button>
+
+                    <div class="form-message" id="form-message"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
