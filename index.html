@@ -2596,6 +2596,382 @@
                 }
             });
         });
+
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            document.getElementById('nav-menu').classList.toggle('show');
+        }
+
+        // =====================
+        // QUOTE CALCULATOR
+        // =====================
+
+        // Pricing data (in THB)
+        const pricingData = [
+            {
+                id: 'basic_app',
+                category: 'base',
+                name: { en: 'Basic Personal Use App', fr: 'Application personnelle de base', ar: 'تطبيق شخصي أساسي', th: 'แอปใช้งานส่วนตัวพื้นฐาน' },
+                desc: { en: 'Self installable and shareable', fr: 'Auto-installable et partageable', ar: 'قابل للتثبيت والمشاركة ذاتياً', th: 'ติดตั้งเองและแชร์ได้' },
+                android: 9700,
+                apple: null
+            },
+            {
+                id: 'pro_app',
+                category: 'base',
+                name: { en: 'Professional Use App', fr: 'Application professionnelle', ar: 'تطبيق للاستخدام المهني', th: 'แอปใช้งานแบบมืออาชีพ' },
+                desc: { en: 'Full-featured professional application', fr: 'Application professionnelle complète', ar: 'تطبيق احترافي كامل الميزات', th: 'แอปพลิเคชันมืออาชีพครบครัน' },
+                android: 16500,
+                apple: 14500
+            },
+            {
+                id: 'logo_design',
+                category: 'design',
+                name: { en: 'Logo and Design Creation', fr: 'Création de logo et design', ar: 'إنشاء الشعار والتصميم', th: 'สร้างโลโก้และการออกแบบ' },
+                desc: { en: 'Basic version offers basic graphics', fr: 'La version de base offre des graphismes basiques', ar: 'النسخة الأساسية تقدم رسومات بسيطة', th: 'เวอร์ชันพื้นฐานมีกราฟิกพื้นฐาน' },
+                android: 1900,
+                apple: 1900
+            },
+            {
+                id: 'add_language',
+                category: 'features',
+                name: { en: 'Additional Language', fr: 'Langue supplémentaire', ar: 'لغة إضافية', th: 'ภาษาเพิ่มเติม' },
+                desc: { en: 'Basic offer comes in English', fr: 'L\'offre de base est en anglais', ar: 'العرض الأساسي باللغة الإنجليزية', th: 'ข้อเสนอพื้นฐานเป็นภาษาอังกฤษ' },
+                android: 2950,
+                apple: 2950
+            },
+            {
+                id: 'user_management',
+                category: 'features',
+                name: { en: 'User Creation and Management', fr: 'Création et gestion des utilisateurs', ar: 'إنشاء وإدارة المستخدمين', th: 'การสร้างและจัดการผู้ใช้' },
+                desc: { en: 'If you plan to register users', fr: 'Si vous prévoyez d\'enregistrer des utilisateurs', ar: 'إذا كنت تخطط لتسجيل المستخدمين', th: 'หากคุณวางแผนที่จะลงทะเบียนผู้ใช้' },
+                android: 5400,
+                apple: 3400
+            },
+            {
+                id: 'social_login',
+                category: 'features',
+                name: { en: 'Social Media Login Integration', fr: 'Intégration de connexion aux réseaux sociaux', ar: 'تكامل تسجيل الدخول بوسائل التواصل الاجتماعي', th: 'การเข้าสู่ระบบด้วยโซเชียลมีเดีย' },
+                desc: { en: 'Login with Facebook, Google, etc.', fr: 'Connexion avec Facebook, Google, etc.', ar: 'تسجيل الدخول بفيسبوك، جوجل، إلخ', th: 'เข้าสู่ระบบด้วย Facebook, Google ฯลฯ' },
+                android: 4400,
+                apple: 3800
+            },
+            {
+                id: 'google_maps',
+                category: 'integrations',
+                name: { en: 'Google Maps Integration', fr: 'Intégration Google Maps', ar: 'تكامل خرائط جوجل', th: 'การผสานรวม Google Maps' },
+                desc: { en: 'Maps, locations, and directions', fr: 'Cartes, emplacements et itinéraires', ar: 'الخرائط والمواقع والاتجاهات', th: 'แผนที่ สถานที่ และเส้นทาง' },
+                android: 3700,
+                apple: 3100
+            },
+            {
+                id: 'advertising',
+                category: 'monetization',
+                name: { en: 'Advertising Network Integration', fr: 'Intégration du réseau publicitaire', ar: 'تكامل شبكة الإعلانات', th: 'การผสานรวมเครือข่ายโฆษณา' },
+                desc: { en: 'If you plan to monetize your app. Requires strong setup', fr: 'Pour monétiser votre app. Nécessite une configuration solide', ar: 'لتحقيق الدخل من تطبيقك. يتطلب إعداداً قوياً', th: 'หากวางแผนสร้างรายได้จากแอป ต้องการการตั้งค่าที่แข็งแกร่ง' },
+                android: 5900,
+                apple: 5100
+            },
+            {
+                id: 'geolocation',
+                category: 'features',
+                name: { en: 'Real-time Geolocation', fr: 'Géolocalisation en temps réel', ar: 'تحديد الموقع الجغرافي في الوقت الفعلي', th: 'ตำแหน่งทางภูมิศาสตร์แบบเรียลไทม์' },
+                desc: { en: 'Track location in real-time', fr: 'Suivre la localisation en temps réel', ar: 'تتبع الموقع في الوقت الفعلي', th: 'ติดตามตำแหน่งแบบเรียลไทม์' },
+                android: 3200,
+                apple: 2900
+            },
+            {
+                id: 'payment_standard',
+                category: 'payments',
+                name: { en: 'Standard Payment Gateway', fr: 'Passerelle de paiement standard', ar: 'بوابة الدفع القياسية', th: 'ช่องทางการชำระเงินมาตรฐาน' },
+                desc: { en: 'With classic online platforms (Stripe, PayPal)', fr: 'Avec les plateformes classiques (Stripe, PayPal)', ar: 'مع المنصات الكلاسيكية (Stripe, PayPal)', th: 'กับแพลตฟอร์มออนไลน์ทั่วไป (Stripe, PayPal)' },
+                android: 2800,
+                apple: 2600
+            },
+            {
+                id: 'payment_bank',
+                category: 'payments',
+                name: { en: 'National Bank Payment Gateway', fr: 'Passerelle de paiement bancaire nationale', ar: 'بوابة الدفع البنكي الوطني', th: 'ช่องทางการชำระเงินธนาคารในประเทศ' },
+                desc: { en: 'Direct bank integration', fr: 'Intégration bancaire directe', ar: 'تكامل مباشر مع البنك', th: 'การเชื่อมต่อธนาคารโดยตรง' },
+                android: 3400,
+                apple: 3400
+            },
+            {
+                id: 'payment_complex',
+                category: 'payments',
+                name: { en: 'Complex Payment Gateway', fr: 'Passerelle de paiement complexe', ar: 'بوابة دفع معقدة', th: 'ช่องทางการชำระเงินที่ซับซ้อน' },
+                desc: { en: 'Multiple payment methods and currencies', fr: 'Méthodes de paiement et devises multiples', ar: 'طرق دفع وعملات متعددة', th: 'วิธีการชำระเงินและสกุลเงินหลายรายการ' },
+                android: 4200,
+                apple: 4200
+            },
+            {
+                id: 'camera',
+                category: 'features',
+                name: { en: 'Camera Access', fr: 'Accès à la caméra', ar: 'الوصول إلى الكاميرا', th: 'การเข้าถึงกล้อง' },
+                desc: { en: 'Take photos and videos', fr: 'Prendre des photos et vidéos', ar: 'التقاط الصور والفيديوهات', th: 'ถ่ายรูปและวิดีโอ' },
+                android: 2900,
+                apple: 2900
+            },
+            {
+                id: 'ocr',
+                category: 'features',
+                name: { en: 'OCR/Text Recognition', fr: 'OCR/Reconnaissance de texte', ar: 'التعرف على النص/OCR', th: 'การรู้จำข้อความ/OCR' },
+                desc: { en: 'Extract text from images', fr: 'Extraire le texte des images', ar: 'استخراج النص من الصور', th: 'แยกข้อความจากรูปภาพ' },
+                android: 5500,
+                apple: 5500
+            },
+            {
+                id: 'backend',
+                category: 'backend',
+                name: { en: 'User Backend Management', fr: 'Gestion backend utilisateur', ar: 'إدارة الواجهة الخلفية للمستخدم', th: 'การจัดการแบ็กเอนด์ผู้ใช้' },
+                desc: { en: 'Admin panel for user management', fr: 'Panneau d\'administration pour la gestion des utilisateurs', ar: 'لوحة إدارة لإدارة المستخدمين', th: 'แผงควบคุมสำหรับจัดการผู้ใช้' },
+                android: 5100,
+                apple: 4100
+            },
+            {
+                id: 'ecommerce',
+                category: 'ecommerce',
+                name: { en: 'Online Shopping Module', fr: 'Module de shopping en ligne', ar: 'وحدة التسوق عبر الإنترنت', th: 'โมดูลช้อปปิ้งออนไลน์' },
+                desc: { en: 'Full e-commerce with orders management', fr: 'E-commerce complet avec gestion des commandes', ar: 'تجارة إلكترونية كاملة مع إدارة الطلبات', th: 'อีคอมเมิร์ซครบวงจรพร้อมการจัดการคำสั่งซื้อ' },
+                android: 6600,
+                apple: 6600
+            },
+            {
+                id: 'marketplace',
+                category: 'publishing',
+                name: { en: 'Publication in Marketplaces', fr: 'Publication sur les marketplaces', ar: 'النشر في المتاجر', th: 'เผยแพร่ใน Marketplace' },
+                desc: { en: 'Requires strong technical and legal setup', fr: 'Nécessite une configuration technique et légale solide', ar: 'يتطلب إعداداً تقنياً وقانونياً قوياً', th: 'ต้องการการตั้งค่าทางเทคนิคและกฎหมายที่แข็งแกร่ง' },
+                android: 6200,
+                apple: 7400
+            },
+            {
+                id: 'database',
+                category: 'backend',
+                name: { en: 'Database and Storage Setup', fr: 'Configuration base de données et stockage', ar: 'إعداد قاعدة البيانات والتخزين', th: 'การตั้งค่าฐานข้อมูลและพื้นที่เก็บข้อมูล' },
+                desc: { en: 'Mandatory for elaborated functions, included in professional plan', fr: 'Obligatoire pour les fonctions élaborées, inclus dans le plan pro', ar: 'إلزامي للوظائف المتقدمة، مضمن في الخطة الاحترافية', th: 'จำเป็นสำหรับฟังก์ชันขั้นสูง รวมอยู่ในแผนมืออาชีพ' },
+                android: 2950,
+                apple: 1950
+            },
+            {
+                id: 'domain',
+                category: 'backend',
+                name: { en: 'Domain Name and Email Setup', fr: 'Configuration nom de domaine et email', ar: 'إعداد اسم النطاق والبريد الإلكتروني', th: 'การตั้งค่าโดเมนและอีเมล' },
+                desc: { en: 'Not including the domain itself', fr: 'Sans le domaine lui-même', ar: 'لا يشمل النطاق نفسه', th: 'ไม่รวมโดเมนเอง' },
+                android: 1400,
+                apple: 1400
+            }
+        ];
+
+        // Category labels
+        const categoryLabels = {
+            base: { en: 'Base Application', fr: 'Application de base', ar: 'التطبيق الأساسي', th: 'แอปพลิเคชันพื้นฐาน' },
+            design: { en: 'Design', fr: 'Design', ar: 'التصميم', th: 'การออกแบบ' },
+            features: { en: 'Features', fr: 'Fonctionnalités', ar: 'الميزات', th: 'คุณสมบัติ' },
+            integrations: { en: 'Integrations', fr: 'Intégrations', ar: 'التكاملات', th: 'การผสานรวม' },
+            monetization: { en: 'Monetization', fr: 'Monétisation', ar: 'تحقيق الدخل', th: 'การสร้างรายได้' },
+            payments: { en: 'Payment Gateways', fr: 'Passerelles de paiement', ar: 'بوابات الدفع', th: 'ช่องทางการชำระเงิน' },
+            backend: { en: 'Backend & Infrastructure', fr: 'Backend & Infrastructure', ar: 'الواجهة الخلفية والبنية التحتية', th: 'แบ็กเอนด์และโครงสร้างพื้นฐาน' },
+            ecommerce: { en: 'E-commerce', fr: 'E-commerce', ar: 'التجارة الإلكترونية', th: 'อีคอมเมิร์ซ' },
+            publishing: { en: 'Publishing', fr: 'Publication', ar: 'النشر', th: 'การเผยแพร่' }
+        };
+
+        // Currency settings
+        const currencyConfig = {
+            THB: { symbol: '฿', rate: 1, format: (v) => '฿' + v.toLocaleString() },
+            USD: { symbol: '$', rate: 0.029, format: (v) => '$' + v.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) },
+            EUR: { symbol: '€', rate: 0.027, format: (v) => '€' + v.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) },
+            MAD: { symbol: 'DH', rate: 0.29, format: (v) => v.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + ' DH' }
+        };
+
+        let currentCurrency = 'THB';
+        let currentPlatform = 'android';
+        let selectedOptions = new Set();
+
+        // Format price
+        function formatPrice(thbPrice) {
+            if (thbPrice === null) return null;
+            const converted = Math.round(thbPrice * currencyConfig[currentCurrency].rate);
+            return currencyConfig[currentCurrency].format(converted);
+        }
+
+        // Set currency
+        function setCurrency(currency) {
+            currentCurrency = currency;
+            document.querySelectorAll('.currency-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('currency-' + currency).classList.add('active');
+            renderQuoteOptions();
+            updateSummary();
+        }
+
+        // Set platform
+        function setPlatform(platform) {
+            currentPlatform = platform;
+            document.querySelectorAll('.platform-tab').forEach(tab => tab.classList.remove('active'));
+            document.getElementById('platform-' + platform).classList.add('active');
+            renderQuoteOptions();
+            updateSummary();
+        }
+
+        // Toggle option selection
+        function toggleOption(id) {
+            const option = pricingData.find(o => o.id === id);
+            if (!option) return;
+
+            // Check if option is available for current platform
+            if (currentPlatform === 'android' && option.android === null) return;
+            if (currentPlatform === 'apple' && option.apple === null) return;
+            if (currentPlatform === 'both' && (option.android === null || option.apple === null)) return;
+
+            if (selectedOptions.has(id)) {
+                selectedOptions.delete(id);
+            } else {
+                selectedOptions.add(id);
+            }
+
+            renderQuoteOptions();
+            updateSummary();
+        }
+
+        // Get price for option based on platform
+        function getOptionPrice(option) {
+            if (currentPlatform === 'android') return option.android;
+            if (currentPlatform === 'apple') return option.apple;
+            if (currentPlatform === 'both') {
+                if (option.android === null || option.apple === null) return null;
+                return option.android + option.apple;
+            }
+            return null;
+        }
+
+        // Render quote options
+        function renderQuoteOptions() {
+            const container = document.getElementById('quote-options');
+            const lang = currentLang;
+
+            // Group by category
+            const categories = {};
+            pricingData.forEach(option => {
+                if (!categories[option.category]) {
+                    categories[option.category] = [];
+                }
+                categories[option.category].push(option);
+            });
+
+            let html = '';
+            const categoryOrder = ['base', 'design', 'features', 'integrations', 'monetization', 'payments', 'backend', 'ecommerce', 'publishing'];
+
+            categoryOrder.forEach(cat => {
+                if (!categories[cat]) return;
+
+                html += `<div class="quote-category">
+                    <div class="category-title">${categoryLabels[cat][lang]}</div>`;
+
+                categories[cat].forEach(option => {
+                    const isSelected = selectedOptions.has(option.id);
+                    const price = getOptionPrice(option);
+                    const isDisabled = price === null;
+
+                    html += `
+                        <div class="quote-option ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}" 
+                             onclick="${isDisabled ? '' : 'toggleOption(\'' + option.id + '\')'}">
+                            <div class="quote-checkbox">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <div class="quote-info">
+                                <div class="quote-name">${option.name[lang]}</div>
+                                <div class="quote-desc">${option.desc[lang]}</div>
+                            </div>
+                            <div class="quote-prices">`;
+
+                    if (currentPlatform === 'both') {
+                        html += `
+                            <div class="quote-price">
+                                <div class="quote-price-label">Android</div>
+                                <div class="${option.android !== null ? 'quote-price-value' : 'quote-price-na'}">
+                                    ${option.android !== null ? formatPrice(option.android) : 'N/A'}
+                                </div>
+                            </div>
+                            <div class="quote-price">
+                                <div class="quote-price-label">iOS</div>
+                                <div class="${option.apple !== null ? 'quote-price-value' : 'quote-price-na'}">
+                                    ${option.apple !== null ? formatPrice(option.apple) : 'N/A'}
+                                </div>
+                            </div>`;
+                    } else {
+                        const priceValue = currentPlatform === 'android' ? option.android : option.apple;
+                        html += `
+                            <div class="quote-price">
+                                <div class="quote-price-label">${currentPlatform === 'android' ? 'Android' : 'iOS'}</div>
+                                <div class="${priceValue !== null ? 'quote-price-value' : 'quote-price-na'}">
+                                    ${priceValue !== null ? formatPrice(priceValue) : 'N/A'}
+                                </div>
+                            </div>`;
+                    }
+
+                    html += `</div></div>`;
+                });
+
+                html += `</div>`;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // Update summary
+        function updateSummary() {
+            const summaryItems = document.getElementById('summary-items');
+            const summaryTotal = document.getElementById('summary-total');
+            const lang = currentLang;
+
+            const emptyTexts = {
+                en: 'Select options to see your quote',
+                fr: 'Sélectionnez des options pour voir votre devis',
+                ar: 'حدد الخيارات لرؤية عرض السعر',
+                th: 'เลือกตัวเลือกเพื่อดูใบเสนอราคา'
+            };
+
+            if (selectedOptions.size === 0) {
+                summaryItems.innerHTML = `<div class="summary-empty">${emptyTexts[lang]}</div>`;
+                summaryTotal.textContent = formatPrice(0);
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            selectedOptions.forEach(id => {
+                const option = pricingData.find(o => o.id === id);
+                if (!option) return;
+
+                const price = getOptionPrice(option);
+                if (price === null) return;
+
+                total += price;
+                html += `
+                    <div class="summary-item">
+                        <span class="summary-item-name">${option.name[lang]}</span>
+                        <span class="summary-item-price">${formatPrice(price)}</span>
+                    </div>`;
+            });
+
+            summaryItems.innerHTML = html;
+            summaryTotal.textContent = formatPrice(total);
+        }
+
+        // Clear quote
+        function clearQuote() {
+            selectedOptions.clear();
+            renderQuoteOptions();
+            updateSummary();
+        }
+
+        // Initialize quote calculator when DOM is ready
+        function initQuoteCalculator() {
+            renderQuoteOptions();
+            updateSummary();
+        }
     </script>
 </body>
 </html>
