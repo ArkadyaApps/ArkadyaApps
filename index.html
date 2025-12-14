@@ -41,10 +41,95 @@
             padding: 0 1rem;
         }
 
+        /* Navigation Menu */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(30, 41, 54, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(58, 69, 83, 0.5);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--foreground);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--foreground);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 73px;
+                left: 0;
+                right: 0;
+                background: rgba(30, 41, 54, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                gap: 0;
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(58, 69, 83, 0.5);
+                display: none;
+            }
+
+            .nav-menu.show {
+                display: flex;
+            }
+
+            .nav-link {
+                width: 100%;
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid rgba(58, 69, 83, 0.3);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
         /* Language Switcher */
         .lang-switcher {
             position: fixed;
-            top: 1.5rem;
+            top: 5rem;
             right: 1.5rem;
             z-index: 1000;
         }
