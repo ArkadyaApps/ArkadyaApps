@@ -15,7 +15,7 @@ export const UnifiedWorkSection = () => {
   const ongoingProjects = [
     {
       name: 'Winwai',
-      url: 'https://rewards-platform-3.preview.emergentagent.com/',
+      url: 'https://tech-portfolio-305.preview.emergentagent.com/',
       description: t.work.ongoing[0].description,
       category: t.work.ongoing[0].category,
       status: 'Live',

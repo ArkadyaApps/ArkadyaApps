@@ -13,7 +13,7 @@ export const CurrentWorkSection = () => {
   const projects = [
     {
       name: 'Winwai',
-      url: 'https://rewards-platform-3.preview.emergentagent.com/',
+      url: 'https://tech-portfolio-305.preview.emergentagent.com/',
       description: t.currentWork.projects[0].description,
       category: t.currentWork.projects[0].category,
       pages: [
