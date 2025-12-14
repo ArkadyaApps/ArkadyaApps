@@ -196,9 +196,15 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Our Work Portfolio Section Testing"
+    - "Navigation Menu Testing"
+    - "Language Switcher Testing"
+    - "Language Switching and RTL Testing"
+    - "Quotes Calculator Testing"
+    - "Quotes Calculator Disabled Options Testing"
+    - "Contact Section Testing"
+    - "Responsive Design Testing"
   stuck_tasks: []
-  test_all: false
+  test_all: true
   test_priority: "high_first"
 
 agent_communication:
